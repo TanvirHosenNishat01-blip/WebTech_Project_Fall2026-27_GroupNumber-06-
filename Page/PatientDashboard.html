@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../design/Style.css">
+    <script src="../JS/Common.js" defer></script>
+<script src="../JS/Patient.js" defer></script>
+
+    <title>Patient Dashboard - LifeFlow</title>
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+
+            <div class="sidebar-logo">
+                <h2>LifeFlow</h2>
+                <p>Give Blood, Save Lives</p>
+            </div>
+
+            <div class="sidebar-menu">
+
+                <a href="PatientDashboard.html" class="active">Dashboard</a>
+
+                <a href="PostBloodRequest.html">Post Request</a>
+
+                <a href="SearchDonors.html">Search Donors</a>
+
+                <a href="PatientRequestHistory.html">My Requests</a>
+
+                <a href="PatientRegistration.html">My Profile</a>
+
+                <a href="PatientRegistration.html">Logout</a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Main Content -->
+        <div class="main-content">
+
+            <!-- Header and Search Bar -->
+            <div class="topbar">
+
+                <h2>LifeFlow</h2>
+
+                <form class="search-box" onsubmit="return searchDonors()">
+
+                    <input type="text" id="DonorSearch"
+                        placeholder="Search donors by blood group...">
+
+                   <button type="submit" aria-label="Search">
+                       ⌕
+                   </button>
+
+                </form>
+
+                
+
+            </div>
+
+
+            <!-- Page Heading -->
+            <div class="page-heading">
+
+                <h2>Patient Dashboard</h2>
+
+                <p>Welcome to your LifeFlow account!</p>
+
+            </div>
+
+
+            <!-- Summary Cards -->
+            <div class="dashboard-cards">
+
+                <div class="dashboard-card">
+                    <h1 id="TotalRequests">0</h1>
+                    <h3>Total Requests</h3>
+                </div>
+
+                <div class="dashboard-card">
+                    <h1 id="PendingRequests">0</h1>
+                    <h3>Pending Requests</h3>
+                </div>
+
+                <div class="dashboard-card">
+                    <h1 id="FulfilledRequests">0</h1>
+                    <h3>Fulfilled Requests</h3>
+                </div>
+
+                <div class="dashboard-card">
+                    <h1 id="AvailableDonors">12</h1>
+                    <h3>Available Donors</h3>
+                </div>
+
+            </div>
+
+
+            <!-- Recent Blood Requests -->
+            <div class="requests-panel">
+
+                <h2>Recent Blood Requests</h2>
+
+               
+
+                <div class="table-container">
+
+                    <table class="request-table">
+
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Blood Group</th>
+                                <th>Units</th>
+                                <th>Hospital</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="RecentRequests">
+
+                            <tr>
+                                <td colspan="6" class="empty-message">
+                                    No blood requests found.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- Message -->
+            <p id="DashboardMessage"></p>
+
+
+            <!-- Footer -->
+            <div class="footer">
+                <h5>LifeFlow - Blood Donation Network</h5>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
