@@ -1,0 +1,826 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Cambria, Cochin, Georgia, Times,
+        'Times New Roman', serif;
+    font-size: 16px;
+    background-color: whitesmoke;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+/* ===== Header ===== */
+
+.header {
+    background-color: darkred;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* ===== Navigation ===== */
+
+.topnav {
+    background-color: gray;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 12px 14px;
+    text-decoration: none;
+}
+
+.topnav a:hover {
+    background-color: darkred;
+}
+
+h2 {
+    color: darkred;
+}
+
+/* ===== Form Design ===== */
+
+fieldset {
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+legend {
+    font-weight: bold;
+    color: white;
+    background-color: darkred;
+    padding: 6px 14px;
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 8px 6px;
+    vertical-align: top;
+}
+
+/* ===== Input Fields ===== */
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: 8px 10px;
+    font-family: inherit;
+    font-size: 16px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: snow;
+}
+
+textarea {
+    height: 90px;
+    resize: none;
+}
+
+/* ===== Input Focus ===== */
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border: 1px solid darkred;
+}
+
+/* ===== Disabled Fields ===== */
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+    background-color: #eeeeee;
+    color: #555555;
+}
+
+/* ===== Radio Button ===== */
+
+input[type="radio"] {
+    accent-color: darkred;
+}
+
+/* ===== Form Buttons ===== */
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+    padding: 10px 18px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    transition: 0.3s;
+    width: 120px;
+    background-color: darkred;
+    color: white;
+}
+
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+    background-color: green;
+    color: white;
+}
+
+/* ===== Messages ===== */
+
+p {
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#Message {
+    color: green;
+}
+
+/* ===== General Footer ===== */
+
+.footer {
+    background-color: gray;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+/* ===== Common Footer Design ===== */
+
+.footer,
+.search-footer {
+    width: 100%;
+    background-color: gray;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 25px;
+    font-family: Cambria, Georgia, serif;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Footer Heading */
+.footer h5 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+
+/* =================================
+   LIFEFlow PATIENT DASHBOARD
+   ================================= */
+
+body:has(.dashboard-layout) {
+    max-width: none;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #fff5f5;
+}
+
+body:has(.dashboard-layout) .dashboard-layout {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #fff5f5;
+    color: #303747;
+}
+
+body:has(.dashboard-layout) .container {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+}
+
+/* ===== Sidebar ===== */
+
+.sidebar {
+    width: 220px;
+    min-width: 220px;
+    background-color: #800000;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-logo {
+    padding: 20px 12px;
+    text-align: center;
+    border-bottom: 1px solid #a94a4a;
+}
+
+.sidebar-logo h2 {
+    color: white;
+    margin: 0;
+    font-size: 25px;
+}
+
+.sidebar-logo p {
+    color: #ffe0e0;
+    font-size: 12px;
+    margin: 5px 0 0;
+}
+
+.sidebar-menu {
+    padding: 18px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.sidebar-menu a {
+    display: block;
+    padding: 13px 10px;
+    color: white;
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.sidebar-menu a span {
+    display: inline-block;
+    width: 27px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+    background-color: #a52a35;
+}
+
+.sidebar-menu .logout {
+    border-top: 1px solid #a94a4a;
+    border-radius: 0;
+    margin-top: 15px;
+    padding-top: 20px;
+}
+
+/* ===== Main Content ===== */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== Top Bar ===== */
+
+.topbar {
+    min-height: 75px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px 25px;
+    border-bottom: 1px solid #f0d0d0;
+    box-shadow: 0 2px 6px #eadada;
+}
+
+.mobile-title {
+    display: none;
+}
+
+.search-box {
+    display: flex;
+    flex: 1;
+    max-width: 470px;
+    margin: 0 auto;
+}
+
+.search-box input {
+    min-width: 0;
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #e0baba;
+    border-radius: 10px 0 0 10px;
+    font-family: inherit;
+    font-size: 14px;
+    background-color: #fffafa;
+}
+
+.search-box button {
+    width: 45px;
+    border: none;
+    background-color: #800000;
+    color: white;
+    font-size: 25px;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background-color: green;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon-button,
+.profile-icon {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background-color: #fff0f0;
+    color: #800000;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.icon-button:hover,
+.profile-icon:hover {
+    background-color: #f3d1d1;
+}
+
+/* ===== Page Heading ===== */
+
+.page-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding: 18px 25px 5px;
+}
+
+.page-heading h2 {
+    color: #800000;
+    margin: 0 0 5px;
+    font-size: 23px;
+}
+
+.page-heading p {
+    color: #777777;
+    font-size: 13px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.new-request-button,
+.view-all-button {
+    background-color: #800000;
+    color: white;
+    padding: 9px 14px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.new-request-button:hover,
+.view-all-button:hover {
+    background-color: green;
+}
+
+/* ===== Smaller Summary Cards ===== */
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    padding: 12px 25px 12px;
+}
+
+.dashboard-card {
+    background-color: white;
+    border: 1px solid #efcccc;
+    border-left: 5px solid #800000;
+    border-radius: 9px;
+    padding: 9px 12px;
+    min-width: 0;
+    box-shadow: 0 2px 5px #eadada;
+}
+
+.card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.card-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #800000;
+    color: white;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.card-symbol {
+    color: #800000;
+    font-size: 19px;
+}
+
+.dashboard-card h1 {
+    color: #800000;
+    font-size: 24px;
+    margin: 4px 0 2px;
+}
+
+.dashboard-card h3 {
+    color: #626777;
+    font-size: 12px;
+    margin: 0;
+}
+
+/* Pending Card */
+
+.pending-card {
+    border-left-color: #e35464;
+}
+
+.pending-card .card-icon {
+    background-color: #e35464;
+}
+
+.pending-card h1,
+.pending-card .card-symbol {
+    color: #e35464;
+}
+
+/* Fulfilled Card */
+
+.fulfilled-card {
+    border-left-color: #269653;
+}
+
+.fulfilled-card .card-icon {
+    background-color: #269653;
+}
+
+.fulfilled-card h1,
+.fulfilled-card .card-symbol {
+    color: #269653;
+}
+
+/* Available Donors Card */
+
+.donor-card {
+    border-left-color: #a71943;
+}
+
+.donor-card .card-icon {
+    background-color: #a71943;
+}
+
+.donor-card h1,
+.donor-card .card-symbol {
+    color: #a71943;
+}
+.request-table thead th {
+    background-color: #800000 !important;
+    color: white !important;
+    text-align: center;
+}
+
+
+
+
+
+/* ==============================
+   MY REQUESTS PAGE
+============================== */
+
+
+
+body.my-requests-page {
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    background-color: #fff5f5;
+}
+
+.my-requests-page .container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Header */
+
+.my-requests-page .header {
+    background-color: darkred;
+    color: white;
+    text-align: center;
+    padding: 15px 10px;
+    margin-bottom: 20px;
+}
+
+/* Heading */
+
+.my-requests-page .my-requests-heading {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    margin: 25px 0 5px;
+    padding: 0;
+}
+
+.my-requests-page .my-requests-heading h2 {
+    margin: 0;
+    padding: 0;
+    color: darkred;
+    font-size: 26px;
+}
+
+/* Back Button */
+
+.my-requests-page .my-requests-back {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    background-color: darkred;
+    color: white;
+    border: 1px solid darkred;
+    border-radius: 6px;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1;
+    box-sizing: border-box;
+}
+
+.my-requests-page .my-requests-back:visited {
+    color: white;
+}
+
+.my-requests-page .my-requests-back:hover {
+    background-color: white;
+    color: darkred;
+}
+
+.my-requests-page .page-description {
+    margin: 8px 0 25px;
+    color: #666;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+/* Summary Cards */
+
+.my-requests-page .summary {
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+    width: 100%;
+    margin: 20px 0 35px;
+}
+
+.my-requests-page .summary-card {
+    flex: 1;
+    min-width: 0;
+    padding: 20px 10px;
+    text-align: center;
+    background-color: white;
+    border: 1px solid #efcccc;
+    border-left: 5px solid darkred;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px #eadada;
+}
+
+.my-requests-page .summary-card h3 {
+    margin: 0 0 8px;
+    color: darkred;
+    font-size: 28px;
+}
+
+.my-requests-page .summary-card p {
+    margin: 0;
+    color: #555;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+/* Table Heading */
+
+.my-requests-page .request-history-heading {
+    color: darkred;
+    font-size: 22px;
+    margin: 25px 0 15px;
+}
+
+/* Table */
+
+.my-requests-page .request-table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.my-requests-page #requestTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    margin: 0 0 25px;
+}
+
+.my-requests-page #requestTable th {
+    background-color: darkred;
+    color: white;
+    padding: 13px 10px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.my-requests-page #requestTable td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+    font-size: 14px;
+}
+
+.my-requests-page #requestTable tbody tr:nth-child(even) {
+    background-color: #fff5f5;
+}
+
+.my-requests-page #requestTable tbody tr:hover {
+    background-color: #fce8eb;
+}
+
+.my-requests-page #requestTable button {
+    background-color: darkred;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 13px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.my-requests-page #requestTable button:hover {
+    background-color: green;
+}
+
+/* Request Details */
+
+.my-requests-page #requestDetails fieldset {
+    border: 1px solid darkred;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.my-requests-page #requestDetails legend {
+    background-color: darkred;
+    color: white;
+}
+
+/* Footer */
+
+.my-requests-page .footer {
+    background-color: gray;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 25px;
+}
+/* ===== Footer Position Fix ===== */
+
+.main-content {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content .footer {
+    margin-top: auto;
+    width: 100%;
+}
+
+.my-requests-page .footer h5 {
+    margin: 5px 0;
+    font-weight: normal;
+}
+
+/* Mobile Screen */
+
+@media screen and (max-width: 700px) {
+
+    body.my-requests-page {
+        padding: 10px;
+    }
+
+    .my-requests-page .my-requests-heading h2 {
+        font-size: 22px;
+    }
+
+    .my-requests-page .summary {
+        gap: 8px;
+    }
+
+    .my-requests-page .summary-card {
+        padding: 15px 4px;
+    }
+
+    .my-requests-page .summary-card h3 {
+        font-size: 22px;
+    }
+
+    .my-requests-page .summary-card p {
+        font-size: 11px;
+    }
+
+    .my-requests-page .request-table-container {
+        overflow-x: auto;
+    }
+
+    .my-requests-page #requestTable {
+        min-width: 750px;
+    }
+}
+/* ===== Apply and Reset Buttons ===== */
+
+.apply-area {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.apply-button,
+.reset-button {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.apply-button {
+    background-color: #800000;
+    color: white;
+}
+
+.apply-button:hover {
+    background-color: green;
+}
+
+.reset-button {
+    background-color: gray;
+    color: white;
+}
+
+.reset-button:hover {
+    background-color: #555555;
+}
+
+
+
+
