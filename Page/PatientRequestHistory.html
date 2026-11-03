@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../design/Style.css">
+    <script src="../JS/Common.js" defer></script>
+<script src="../JS/Patient.js" defer></script>
+
+    <title>My Requests - LifeFlow</title>
+</head>
+
+<body class="my-requests-page">
+
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <h1>LifeFlow</h1>
+            <h3>Real-Time Blood Link &amp; Emergency Network</h3>
+        </div>
+
+        <!-- Page Heading and Back Button -->
+        
+
+           <div class="my-requests-heading">
+
+    <a href=" PatientDashboard.html"
+       class="my-requests-back"
+       title="Back to Dashboard">&#8592;</a>
+
+    <h2>My Requests</h2>
+
+</div>
+
+            
+
+        </div>
+
+        <p class="page-description">
+            Track your blood requests
+        </p>
+
+        <!-- Summary Cards -->
+        <div class="summary">
+
+            <div class="summary-card">
+                <h3 id="totalCount">06</h3>
+                <p>Total Requests</p>
+            </div>
+
+            <div class="summary-card">
+                <h3 id="pendingCount">02</h3>
+                <p>Pending</p>
+            </div>
+
+            <div class="summary-card">
+                <h3 id="completedCount">03</h3>
+                <p>Completed</p>
+            </div>
+
+        </div>
+
+        <!-- Blood Request History -->
+        <h2 class="request-history-heading">
+            Blood Request History
+        </h2>
+
+        <div class="request-table-container">
+
+            <table id="requestTable">
+
+                <thead>
+                    <tr>
+                        <th>Request ID</th>
+                        <th>Blood</th>
+                        <th>Units</th>
+                        <th>Hospital</th>
+                        <th>Required Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="requestTableBody">
+                    
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- Request Details -->
+        <div id="requestDetails"></div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <h5>LifeFlow - Blood Donation Network </h5>
+        </div>
+
+    </div>
+
+</body>
+</html>
