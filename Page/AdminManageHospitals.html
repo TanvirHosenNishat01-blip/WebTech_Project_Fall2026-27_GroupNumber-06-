@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow - Manage Hospitals</title>
+    <link rel="stylesheet" href="../Design/Style.css">
+    <script src="../JS/Common.js"></script>
+    <script src="../JS/Admin.js"></script>
+</head>
+<body onload="loadHospitalsTable()">
+    <!-- Top banner -->
+    <div class="header">
+        <h1>LifeFlow Administration Portal</h1>
+    </div>
+
+    <!-- Navigation bar -->
+    <div class="topnav">
+        <a href="../index.html">Home</a>
+        <a href="AdminRegistration.html">Registration</a>
+        <a href="AdminDashboard.html">Dashboard</a>
+        <a href="AdminVerifyRequests.html">Verify Requests</a>
+        <a href="AdminManageUsers.html">Manage Users</a>
+        <a href="AdminManageHospitals.html" class="active">Hospitals</a>
+    </div>
+
+    <!-- Hospital registry container -->
+    <div class="container">
+        <h2>Hospital & Blood Bank Reserve Registry</h2>
+        <p style="color: #64748b; margin-bottom: 20px;">Institutional partner directory and blood stock summary.</p>
+
+        <!-- Add partner hospital form -->
+        <fieldset>
+            <legend>Quick Add Partner Hospital</legend>
+            <table class="form-table">
+                <tr>
+                    <td>Hospital Name:</td>
+                    <td><input type="text" id="hospName" placeholder="e.g. Apollo Blood Bank"></td>
+                </tr>
+                <tr>
+                    <td>District:</td>
+                    <td><input type="text" id="hospDistrict" placeholder="e.g. Dhaka"></td>
+                </tr>
+                <tr>
+                    <td>Thana:</td>
+                    <td><input type="text" id="hospThana" placeholder="e.g. Gulshan"></td>
+                </tr>
+                <tr>
+                    <td>Initial Stock Units:</td>
+                    <td><input type="text" id="hospStock" placeholder="e.g. 50"></td>
+                </tr>
+            </table>
+            <div style="text-align: right; margin-top: 10px;">
+                <button type="button" class="btn btn-primary btn-sm" onclick="addHospital()">Add Hospital to Registry</button>
+            </div>
+        </fieldset>
+
+        <!-- Dynamic hospital table -->
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Reg ID</th>
+                    <th>Hospital / Facility Name</th>
+                    <th>District</th>
+                    <th>Thana</th>
+                    <th>Total Stock Units</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="hospitalTableBody">
+                <!-- Rows dynamically injected via Admin.js -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-text">
+        <p>LifeFlow Portal Administration &copy; 2026</p>
+    </div>
+</body>
+</html>

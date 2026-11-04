@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow - Admin Dashboard</title>
+    <link rel="stylesheet" href="../Design/Style.css">
+    <script src="../JS/Common.js"></script>
+    <script src="../JS/Admin.js"></script>
+</head>
+<body onload="loadAdminDashboard()">
+    <!-- Top banner -->
+    <div class="header">
+        <h1>LifeFlow Administration Portal</h1>
+    </div>
+
+    <!-- Navigation bar -->
+    <div class="topnav">
+        <a href="../index.html">Home</a>
+        <a href="AdminRegistration.html">Registration</a>
+        <a href="AdminDashboard.html" class="active">Dashboard</a>
+        <a href="AdminVerifyRequests.html">Verify Requests</a>
+        <a href="AdminManageUsers.html">Manage Users</a>
+        <a href="AdminManageHospitals.html">Hospitals</a>
+    </div>
+
+    <div class="container">
+        <h2>System Telemetry & Analytics Overview</h2>
+        <p style="color: #64748b; margin-bottom: 20px;">Real-time metrics calculated from browser client data.</p>
+
+        <!-- Metric summary counters -->
+        <div class="card-grid">
+            <div class="metric-card">
+                <h3>Registered Donors</h3>
+                <p id="metric_donors">0</p>
+            </div>
+            <div class="metric-card">
+                <h3>Blood Banks / Hospitals</h3>
+                <p id="metric_hospitals">0</p>
+            </div>
+            <div class="metric-card">
+                <h3>Pending Verifications</h3>
+                <p id="metric_pending" style="color: #ea580c;">0</p>
+            </div>
+            <div class="metric-card">
+                <h3>Verified Transfusions</h3>
+                <p id="metric_verified" style="color: #16a34a;">0</p>
+            </div>
+        </div>
+
+        <!-- Shortcut actions -->
+        <fieldset>
+            <legend>Quick Navigation & Actions</legend>
+            <p style="margin-bottom: 15px;">Choose an administrative operation below:</p>
+            <a href="AdminVerifyRequests.html" class="btn btn-primary">Audit Patient Requests</a>
+            <a href="AdminManageUsers.html" class="btn btn-primary">View User Directory</a>
+            <a href="AdminManageHospitals.html" class="btn btn-primary">Check Hospital Reserves</a>
+        </fieldset>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-text">
+        <p>LifeFlow Portal Administration &copy; 2026</p>
+    </div>
+</body>
+</html>

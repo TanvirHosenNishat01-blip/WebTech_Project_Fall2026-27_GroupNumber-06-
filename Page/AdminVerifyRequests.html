@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow - Verify Requests</title>
+    <link rel="stylesheet" href="../Design/Style.css">
+    <script src="../JS/Common.js"></script>
+    <script src="../JS/Admin.js"></script>
+</head>
+<body onload="loadRequestsTable()">
+    <!-- Top banner -->
+    <div class="header">
+        <h1>LifeFlow Administration Portal</h1>
+    </div>
+
+    <!-- Navigation bar -->
+    <div class="topnav">
+        <a href="../index.html">Home</a>
+        <a href="AdminRegistration.html">Registration</a>
+        <a href="AdminDashboard.html">Dashboard</a>
+        <a href="AdminVerifyRequests.html" class="active">Verify Requests</a>
+        <a href="AdminManageUsers.html">Manage Users</a>
+        <a href="AdminManageHospitals.html">Hospitals</a>
+    </div>
+
+    <!-- Requests audit container -->
+    <div class="container">
+        <h2>Hospital Transfusion Requisitions Audit</h2>
+        <p style="color: #64748b;">Verify prescription tickets to filter fraudulent requests.</p>
+
+        <!-- Dynamic requests table -->
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Req ID</th>
+                    <th>Patient Name</th>
+                    <th>Hospital</th>
+                    <th>Group</th>
+                    <th>Units</th>
+                    <th>Urgency</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="requestTableBody">
+                <!-- Rows dynamically injected via Admin.js -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-text">
+        <p>LifeFlow Portal Administration &copy; 2026</p>
+    </div>
+</body>
+</html>
