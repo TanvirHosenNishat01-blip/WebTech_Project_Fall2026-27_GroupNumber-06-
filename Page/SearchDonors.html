@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,180 +7,222 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../design/Style.css">
-    
-<script src="../JS/Common.js" defer></script>
-<script src="../JS/Patient.js" defer></script>
+
+    <script src="../JS/Common.js" defer></script>
+    <script src="../JS/Patient.js" defer></script>
 
     <title>Search Donors - LifeFlow</title>
 </head>
 
-<body class="search-page">
+<body>
+    
 
-    <div class="search-container">
+    <!-- Top banner -->
+    <div class="header">
+        <h1>LifeFlow</h1>
+        <h3>Patient Portal</h3>
+    </div>
 
-        <!-- Header -->
-        <div class="search-header">
+    <!-- Navigation bar -->
+    <div class="topnav">
+        <a href="PatientRegistration.html">Home</a>
+        <a href="PatientDashboard.html">Dashboard</a>
+        <a href="PostBloodRequest.html">Post Request</a>
+        <a href="SearchDonors.html" class="active">Search Donor</a>
+        <a href="PatientRequestHistory.html">Patient Request History</a>
+    </div>
 
-            <a href="PatientDashboard.html" class="back-button">&larr;</a>
+    <!-- Donor Search Container -->
+    <div class="container">
 
-            <h1>Search Donors</h1>
+        <h2>Search Donors Registry</h2>
 
-        </div>
-
+        <p style="color: #64748b; margin-bottom: 20px;">
+            Search blood donors by blood group, location and availability.
+        </p>
 
         <!-- Search Form -->
-        <form class="search-box" onsubmit="return searchDonors()">
+        <fieldset>
 
-            <input type="text" id="searchInput"
-                placeholder="Search donors...">
+            <legend>Search Blood Donors</legend>
 
-            <button type="submit" aria-label="Search">
-                &#128269;
-            </button>
+            <table class="form-table">
 
-        </form>
-
-
-        <!-- Filter Form -->
-        <form id="filterForm">
-
-            <fieldset>
-
-                <legend>Filters</legend>
-
-
+                
                 <!-- Blood Group -->
-                <fieldset>
+                <tr>
+                    <td>Blood Type:</td>
+                    <td>
+                        <input type="radio" name="bloodGroup" id="Apositive" value="A+">
+                        <label for="Apositive">A+</label>
 
-                    <legend>Blood Type</legend>
+                        <input type="radio" name="bloodGroup" id="Anegative" value="A-">
+                        <label for="Anegative">A-</label>
 
-                    <input type="radio" name="bloodGroup" id="Apositive" value="A+">
-                    <label for="Apositive">A+</label>
+                        <input type="radio" name="bloodGroup" id="Bpositive" value="B+">
+                        <label for="Bpositive">B+</label>
 
-                    <input type="radio" name="bloodGroup" id="Anegative" value="A-">
-                    <label for="Anegative">A-</label>
+                        <input type="radio" name="bloodGroup" id="Bnegative" value="B-">
+                        <label for="Bnegative">B-</label>
 
-                    <input type="radio" name="bloodGroup" id="Bpositive" value="B+">
-                    <label for="Bpositive">B+</label>
+                        <input type="radio" name="bloodGroup" id="Opositive" value="O+">
+                        <label for="Opositive">O+</label>
 
-                    <input type="radio" name="bloodGroup" id="Bnegative" value="B-">
-                    <label for="Bnegative">B-</label>
+                        <input type="radio" name="bloodGroup" id="Onegative" value="O-">
+                        <label for="Onegative">O-</label>
 
-                    <input type="radio" name="bloodGroup" id="Opositive" value="O+">
-                    <label for="Opositive">O+</label>
+                        <input type="radio" name="bloodGroup" id="ABpositive" value="AB+">
+                        <label for="ABpositive">AB+</label>
 
-                    <input type="radio" name="bloodGroup" id="Onegative" value="O-">
-                    <label for="Onegative">O-</label>
+                        <input type="radio" name="bloodGroup" id="ABnegative" value="AB-">
+                        <label for="ABnegative">AB-</label>
 
-                    <input type="radio" name="bloodGroup" id="ABpositive" value="AB+">
-                    <label for="ABpositive">AB+</label>
-
-                    <input type="radio" name="bloodGroup" id="ABnegative" value="AB-">
-                    <label for="ABnegative">AB-</label>
-
-                    <p id="BloodError" class="error-message"></p>
-
-                </fieldset>
-
+                        <p id="BloodError" class="error-message"></p>
+                    </td>
+                </tr>
 
                 <!-- Location -->
-                <fieldset>
+                <tr>
+                    <td>District:</td>
+                    <td>
+                        <select id="district">
+                            <option value="">All Districts</option>
+                            <option value="Dhaka">Dhaka</option>
+                            <option value="Chattogram">Chattogram</option>
+                            <option value="Cumilla">Cumilla</option>
+                            <option value="Gazipur">Gazipur</option>
+                        </select>
 
-                    <legend>Location</legend>
+                        <p id="DistrictError" class="error-message"></p>
+                    </td>
+                </tr>
 
-                    <label for="district">District:</label>
+                <tr>
+                    <td>Thana:</td>
+                    <td>
+                        <select id="thana">
+                            <option value="">All Thanas</option>
+                        </select>
 
-                    <select id="district">
-                        <option value="">All Districts</option>
-                        <option value="Dhaka">Dhaka</option>
-                        <option value="Chattogram">Chattogram</option>
-                        <option value="Cumilla">Cumilla</option>
-                        <option value="Gazipur">Gazipur</option>
-                    </select>
-
-                    <p id="DistrictError" class="error-message"></p>
-
-                    <br><br>
-
-                    <label for="thana">Thana:</label>
-
-                    <select id="thana">
-                        <option value="">All Thanas</option>
-                    </select>
-
-                    <p id="ThanaError" class="error-message"></p>
-
-                </fieldset>
-
+                        <p id="ThanaError" class="error-message"></p>
+                    </td>
+                </tr>
 
                 <!-- Blood Bank -->
-                <fieldset>
+                <tr>
+                    <td>Blood Bank:</td>
+                    <td>
+                        <select id="bloodBank">
+                            <option value="">All Blood Banks</option>
+                            <option value="Sandhani">Sandhani</option>
+                            <option value="Red Crescent">Red Crescent</option>
+                            <option value="Quantum">Quantum Foundation</option>
+                        </select>
 
-                    <legend>Blood Bank</legend>
-
-                    <label for="bloodBank">Select Blood Bank:</label>
-
-                    <select id="bloodBank">
-
-                        <option value="">All Blood Banks</option>
-                        <option value="Sandhani">Sandhani</option>
-                        <option value="Red Crescent">Red Crescent</option>
-                        <option value="Quantum">Quantum Foundation</option>
-
-                    </select>
-
-                    <p id="BankError" class="error-message"></p>
-
-                </fieldset>
-
+                        <p id="BankError" class="error-message"></p>
+                    </td>
+                </tr>
 
                 <!-- Donor Availability -->
-                <fieldset>
+                <tr>
+                    <td>Availability:</td>
+                    <td>
+                        <select id="availability">
+                            <option value="">All Donors</option>
+                            <option value="Available">Available</option>
+                            <option value="Unavailable">Unavailable</option>
+                        </select>
 
-                    <legend>Donor Availability</legend>
+                        <p id="AvailabilityError" class="error-message"></p>
+                    </td>
+                </tr>
 
-                    <label for="availability">Availability:</label>
+            </table>
 
-                    <select id="availability">
+            <!-- Search Button -->
+           <div class="btn-group">
 
-                        <option value="">All Donors</option>
-                        <option value="Available">Available</option>
-                        <option value="Unavailable">Unavailable</option>
+                <input type="button" id="save" value="Search Donor"
+                    onclick="saveProfile()">
 
-                    </select>
+                
 
-                    <p id="AvailabilityError" class="error-message"></p>
+            </div>
 
-                </fieldset>
+        </fieldset>
 
+        <br>
 
-                <!-- Buttons -->
-                <div class="apply-area">
+        <!-- Donor Information Table -->
+        
+<table class="data-table" border="1" cellspacing="0" cellpadding="8">
 
-                   <button type="button" id="applyButton" class="apply-button">
-                Apply
-                     </button>
+    <thead>
+    <tr>
+        <th>Donor ID</th>
+        <th>Donor Name</th>
+        <th>Blood Group</th>
+        <th>District</th>
+        <th>Thana</th>
+        <th>Phone Number</th>
+        <th>Availability</th>
+    </tr>
+</thead>
 
-                    <button type="reset" id="resetButton" class="reset-button">
-                        Reset
-                    </button>
+<tbody id="donorTableBody">
 
-                </div>
+    <tr>
+        <td>D001</td>
+        <td>Rahim Ahmed</td>
+        <td>A+</td>
+        <td>Dhaka</td>
+        <td>Gulshan</td>
+        <td>01712345678</td>
+        <td>Available</td>
+    </tr>
 
-            </fieldset>
+    <tr>
+        <td>D002</td>
+        <td>Karim Hasan</td>
+        <td>B+</td>
+        <td>Chattogram</td>
+        <td>Panchlaish</td>
+        <td>01812345678</td>
+        <td>Available</td>
+    </tr>
 
-        </form>
+    <tr>
+        <td>D003</td>
+        <td>Nusrat Jahan</td>
+        <td>O-</td>
+        <td>Gazipur</td>
+        <td>Tongi</td>
+        <td>01912345678</td>
+        <td>Unavailable</td>
+    </tr>
 
+    <tr>
+        <td>D004</td>
+        <td>Sumaiya Akter</td>
+        <td>AB+</td>
+        <td>Cumilla</td>
+        <td>Kotwali</td>
+        <td>01612345678</td>
+        <td>Available</td>
+    </tr>
 
-        <!-- Footer -->
-        <footer class="search-footer">
+</tbody>
 
-            LifeFlow - Blood Donation Network 
+</table>
 
-        </footer>
+</div>
+    
 
+    <!-- Footer -->
+    
+    <div class="footer">
+        <h5>LifeFlow - Blood Donation Network</h5>
     </div>
 
 </body>
-
 </html>
