@@ -195,6 +195,7 @@ function validUsername() {
     }
 }
 
+
 function validPassword() {
     let Password = document.getElementById("Password").value;
     let Error = document.getElementById("PasswordError");
