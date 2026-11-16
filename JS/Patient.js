@@ -1,23 +1,66 @@
 
-/* ==================================================
-   PATIENT REGISTRATION
-================================================== */
+/* COMMON HELPER FUNCTIONS */
 
+function showError(id, message) {
+    var element = document.getElementById(id);
+
+    if (element != null) {
+        element.innerHTML = message;
+    }
+}
+
+function getValue(id) {
+    var element = document.getElementById(id);
+
+    if (element != null) {
+        return element.value;
+    }
+
+    return "";
+}
+
+
+/* 1. PATIENT REGISTRATION */
+
+// Save button
 function saveProfile() {
-    console.log("Save button clicked");
 
-    var valid = registrationCollectData();
+    // Registration page
+    if (document.getElementById("ConfirmPassword") != null) {
 
-    if (valid == true) {
-        document.getElementById("Message").innerHTML =
-            "Profile saved successfully!";
+        var valid = registrationCollectData();
+
+        if (valid == true) {
+            showError("Message", "Profile saved successfully!");
+        }
+
+        return false;
+    }
+
+    // Post Blood Request page
+    if (document.getElementById("RequiredDate") != null) {
+
+        var valid = requestCollectData();
+
+        if (valid == true) {
+            showError("Message", "Blood request submitted successfully!");
+        }
+
+        return false;
+    }
+
+    // Search Donors page
+    if (document.getElementById("district") != null) {
+
+        return searchCollectData();
     }
 
     return false;
 }
 
+
+// Sign Up button
 function signUp() {
-    console.log("Sign Up button clicked");
 
     var valid = registrationCollectData();
 
@@ -28,7 +71,10 @@ function signUp() {
     return false;
 }
 
+
+// Registration validation collection
 function registrationCollectData() {
+
     var valid = true;
 
     if (validName() == false) valid = false;
@@ -43,150 +89,177 @@ function registrationCollectData() {
     if (validateConfirmPassword() == false) valid = false;
 
     if (valid == false) {
-        document.getElementById("Message").innerHTML = "";
+        showError("Message", "");
     }
 
     return valid;
 }
 
+
+// Patient Name
 function validName() {
-    var name = document.getElementById("PatientName").value;
+
+    var name = getValue("PatientName");
 
     if (name.trim().length < 6) {
-        document.getElementById("NameError").innerHTML =
-            "Name must have at least 6 characters.";
+        showError("NameError", "Name must have at least 6 characters.");
         return false;
-    } else {
-        document.getElementById("NameError").innerHTML = "";
-        return true;
     }
+
+    showError("NameError", "");
+    return true;
 }
 
+
+// Patient Age
 function validAge() {
-    var age = document.getElementById("PatientAge").value;
+
+    var age = getValue("PatientAge");
 
     if (age == "" || age <= 1 || age >= 150) {
-        document.getElementById("AgeError").innerHTML =
-            "Age must be greater than 1 and less than 150.";
+        showError("AgeError", "Age must be greater than 1 and less than 150.");
         return false;
-    } else {
-        document.getElementById("AgeError").innerHTML = "";
-        return true;
     }
+
+    showError("AgeError", "");
+    return true;
 }
 
+
+// Email
 function validateEmail() {
-    var email = document.getElementById("PatientEmail").value;
 
-    if (email == "" || !email.includes("@") || !email.includes(".")) {
-        document.getElementById("EmailError").innerHTML =
-            "Enter a valid email.";
+    var email = getValue("PatientEmail");
+
+    if (email == "" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showError("EmailError", "Enter a valid email.");
         return false;
-    } else {
-        document.getElementById("EmailError").innerHTML = "";
-        return true;
     }
+
+    showError("EmailError", "");
+    return true;
 }
 
+
+// Gender
 function ValidateGender() {
-    var male = document.getElementById("Male").checked;
-    var female = document.getElementById("Female").checked;
 
-    if (male == false && female == false) {
-        document.getElementById("GenderError").innerHTML =
-            "Please select your gender.";
-        return false;
-    } else {
-        document.getElementById("GenderError").innerHTML = "";
+    var male = document.getElementById("Male");
+    var female = document.getElementById("Female");
+
+    if (male == null || female == null) {
         return true;
     }
+
+    if (male.checked == false && female.checked == false) {
+        showError("GenderError", "Please select your gender.");
+        return false;
+    }
+
+    showError("GenderError", "");
+    return true;
 }
 
+
+// Phone
 function validatePhone() {
-    var phone = document.getElementById("Phone").value;
+
+    var phone = getValue("Phone");
 
     if (!/^\d{11}$/.test(phone)) {
-        document.getElementById("PhoneError").innerHTML =
-            "Phone number must contain exactly 11 digits.";
+        showError("PhoneError", "Phone number must contain exactly 11 digits.");
         return false;
-    } else {
-        document.getElementById("PhoneError").innerHTML = "";
-        return true;
     }
+
+    showError("PhoneError", "");
+    return true;
 }
 
+
+// Address
 function validateAddress() {
-    var address = document.getElementById("Address").value;
+
+    var address = getValue("Address");
 
     if (address.trim() == "") {
-        document.getElementById("AddressError").innerHTML =
-            "Address cannot be empty.";
+        showError("AddressError", "Address cannot be empty.");
         return false;
-    } else {
-        document.getElementById("AddressError").innerHTML = "";
-        return true;
     }
+
+    showError("AddressError", "");
+    return true;
 }
 
+
+// Citizenship
 function validateCitizenship() {
-    var citizenship = document.getElementById("Citizenship").value;
+
+    var citizenship = getValue("Citizenship");
 
     if (citizenship == "") {
-        document.getElementById("CitizenshipError").innerHTML =
-            "Please select your citizenship.";
+        showError("CitizenshipError", "Please select your citizenship.");
         return false;
-    } else {
-        document.getElementById("CitizenshipError").innerHTML = "";
-        return true;
     }
+
+    showError("CitizenshipError", "");
+    return true;
 }
 
+
+// Username
 function validateUsername() {
-    var username = document.getElementById("Username").value;
+
+    var username = getValue("Username");
 
     if (username.trim() == "") {
-        document.getElementById("UsernameError").innerHTML =
-            "Username cannot be empty.";
+        showError("UsernameError", "Username cannot be empty.");
         return false;
-    } else {
-        document.getElementById("UsernameError").innerHTML = "";
-        return true;
     }
+
+    showError("UsernameError", "");
+    return true;
 }
 
+
+// Password
 function validatePassword() {
-    var password = document.getElementById("Password").value;
+
+    var password = getValue("Password");
 
     if (password.trim() == "") {
-        document.getElementById("PasswordError").innerHTML =
-            "Password cannot be empty.";
+        showError("PasswordError", "Password cannot be empty.");
         return false;
-    } else {
-        document.getElementById("PasswordError").innerHTML = "";
-        return true;
     }
+
+    showError("PasswordError", "");
+    return true;
 }
 
+
+// Confirm Password
 function validateConfirmPassword() {
-    var password = document.getElementById("Password").value;
-    var confirmPassword =
-        document.getElementById("ConfirmPassword").value;
+
+    var password = getValue("Password");
+    var confirmPassword = getValue("ConfirmPassword");
 
     if (confirmPassword == "") {
-        document.getElementById("ConfirmPasswordError").innerHTML =
-            "Please confirm your password.";
+        showError("ConfirmPasswordError", "Please confirm your password.");
         return false;
-    } else if (password != confirmPassword) {
-        document.getElementById("ConfirmPasswordError").innerHTML =
-            "Passwords do not match.";
-        return false;
-    } else {
-        document.getElementById("ConfirmPasswordError").innerHTML = "";
-        return true;
     }
+
+    if (password != confirmPassword) {
+        showError("ConfirmPasswordError", "Passwords do not match.");
+        return false;
+    }
+
+    showError("ConfirmPasswordError", "");
+    return true;
 }
 
+
+// Reset Registration Form
 function resetProfile() {
+
     var errorIds = [
         "NameError", "AgeError", "EmailError", "GenderError",
         "PhoneError", "AddressError", "CitizenshipError",
@@ -195,73 +268,113 @@ function resetProfile() {
     ];
 
     for (var i = 0; i < errorIds.length; i++) {
-        document.getElementById(errorIds[i]).innerHTML = "";
+        showError(errorIds[i], "");
     }
 
-    document.getElementById("PatientName").value = "";
-    document.getElementById("PatientAge").value = "";
-    document.getElementById("PatientEmail").value = "";
-    document.getElementById("Male").checked = false;
-    document.getElementById("Female").checked = false;
-    document.getElementById("Phone").value = "";
-    document.getElementById("Address").value = "";
-    document.getElementById("Citizenship").value = "";
-    document.getElementById("Username").value = "";
-    document.getElementById("Password").value = "";
-    document.getElementById("ConfirmPassword").value = "";
+    var form = document.querySelector("form");
+
+    if (form != null) {
+        form.reset();
+    }
 }
 
 
-/* ==================================================
-   PATIENT DASHBOARD
-================================================== */
+/* 2. PATIENT DASHBOARD */
 
 var allRequests = [];
 
+
+// Load Dashboard
+function loadPatientDashboard() {
+    loadDashboard();
+}
+
+
+// Dashboard data
 function loadDashboard() {
+
     var data = localStorage.getItem("myRequests");
 
     if (data == null) {
         allRequests = [];
     } else {
-        allRequests = JSON.parse(data);
+        try {
+            allRequests = JSON.parse(data);
+
+            if (!Array.isArray(allRequests)) {
+                allRequests = [];
+            }
+        } catch (error) {
+            allRequests = [];
+        }
     }
 
     var total = allRequests.length;
     var pending = 0;
-    var fulfilled = 0;
+    var approved = 0;
 
     for (var i = 0; i < allRequests.length; i++) {
+
         if (allRequests[i].status == "Pending") {
             pending++;
         }
 
-        if (allRequests[i].status == "Fulfilled") {
-            fulfilled++;
+        if (
+            allRequests[i].status == "Approved" ||
+            allRequests[i].status == "Fulfilled"
+        ) {
+            approved++;
         }
     }
 
-    document.getElementById("TotalRequests").innerHTML = total;
-    document.getElementById("PendingRequests").innerHTML = pending;
-    document.getElementById("FulfilledRequests").innerHTML = fulfilled;
+    // Support both old and current Dashboard IDs
+    setDashboardValue("metric_totalRequests", total);
+    setDashboardValue("metric_pendingRequests", pending);
+    setDashboardValue("metric_approvedRequests", approved);
+
+    setDashboardValue("TotalRequests", total);
+    setDashboardValue("PendingRequests", pending);
+    setDashboardValue("FulfilledRequests", approved);
 
     showRecentRequests();
 }
 
+
+// Update Dashboard metric
+function setDashboardValue(id, value) {
+
+    var element = document.getElementById(id);
+
+    if (element != null) {
+        element.innerHTML = value;
+    }
+}
+
+
+// Recent Requests
 function showRecentRequests() {
+
     var table = document.getElementById("RecentRequests");
+
+    if (table == null) {
+        return;
+    }
 
     table.innerHTML = "";
 
     if (allRequests.length == 0) {
+
         table.innerHTML =
             "<tr><td colspan='6' class='empty-message'>" +
             "No blood requests found. Please post a request." +
             "</td></tr>";
+
     } else {
+
         var count = 0;
 
         for (var i = allRequests.length - 1; i >= 0; i--) {
+
             if (count == 5) {
                 break;
             }
@@ -271,7 +384,10 @@ function showRecentRequests() {
 
             if (request.status == "Pending") {
                 statusClass = "status-pending";
-            } else if (request.status == "Fulfilled") {
+            } else if (
+                request.status == "Fulfilled" ||
+                request.status == "Approved"
+            ) {
                 statusClass = "status-fulfilled";
             }
 
@@ -292,8 +408,15 @@ function showRecentRequests() {
     }
 }
 
+
+// View Request Details
 function viewRequest(index) {
+
     var request = allRequests[index];
+
+    if (request == null) {
+        return;
+    }
 
     alert(
         "Blood Request Details\n\n" +
@@ -308,27 +431,36 @@ function viewRequest(index) {
     );
 }
 
+
+// Dashboard Donor Search
 function dashboardSearchDonors() {
-    var bloodGroup = document.getElementById("DonorSearch").value;
+
+    var bloodGroup = getValue("DonorSearch");
 
     window.location.href =
-        "PatientSearchDonors.html?bloodGroup=" +
+        "SearchDonors.html?bloodGroup=" +
         encodeURIComponent(bloodGroup);
 
     return false;
 }
 
+
+// Dashboard Notification
 function showNotifications() {
-    document.getElementById("DashboardMessage").innerHTML =
-        "You can check your latest request status in My Requests.";
+
+    showError(
+        "DashboardMessage",
+        "You can check your latest request status in My Requests."
+    );
 }
 
 
-/* ==================================================
-   SEARCH DONORS
-================================================== */
+/* 3. SEARCH DONORS */
 
+
+// Search Validation Collection
 function searchCollectData() {
+
     var valid = true;
 
     if (searchValidateBloodGroup() == false) valid = false;
@@ -340,132 +472,172 @@ function searchCollectData() {
     return valid;
 }
 
+
+// Blood Group
 function searchValidateBloodGroup() {
-    var blood = document.querySelector('input[name="bloodGroup"]:checked');
+
+    var blood = document.querySelector(
+        'input[name="bloodGroup"]:checked'
+    );
 
     if (blood == null) {
-        document.getElementById("BloodError").innerHTML =
-            "Please select a blood group.";
+        showError("BloodError", "Please select a blood group.");
         return false;
-    } else {
-        document.getElementById("BloodError").innerHTML = "";
-        return true;
     }
+
+    showError("BloodError", "");
+    return true;
 }
 
+
+// District
 function searchValidateDistrict() {
-    var district = document.getElementById("district").value;
+
+    var district = getValue("district");
 
     if (district == "") {
-        document.getElementById("DistrictError").innerHTML =
-            "Please select a district.";
+        showError("DistrictError", "Please select a district.");
         return false;
-    } else {
-        document.getElementById("DistrictError").innerHTML = "";
-        return true;
     }
+
+    showError("DistrictError", "");
+    return true;
 }
 
+
+// Thana
 function searchValidateThana() {
-    var thana = document.getElementById("thana").value;
+
+    var thana = getValue("thana");
 
     if (thana == "") {
-        document.getElementById("ThanaError").innerHTML =
-            "Please select a thana.";
+        showError("ThanaError", "Please select a thana.");
         return false;
-    } else {
-        document.getElementById("ThanaError").innerHTML = "";
-        return true;
     }
+
+    showError("ThanaError", "");
+    return true;
 }
 
+
+// Blood Bank
 function searchValidateBloodBank() {
-    var bank = document.getElementById("bloodBank").value;
+
+    var bank = getValue("bloodBank");
 
     if (bank == "") {
-        document.getElementById("BankError").innerHTML =
-            "Please select a blood bank.";
+        showError("BankError", "Please select a blood bank.");
         return false;
-    } else {
-        document.getElementById("BankError").innerHTML = "";
-        return true;
     }
+
+    showError("BankError", "");
+    return true;
 }
 
+
+// Availability
 function searchValidateAvailability() {
-    var availability = document.getElementById("availability").value;
+
+    var availability = getValue("availability");
 
     if (availability == "") {
-        document.getElementById("AvailabilityError").innerHTML =
-            "Please select donor availability.";
+        showError("AvailabilityError", "Please select donor availability.");
         return false;
-    } else {
-        document.getElementById("AvailabilityError").innerHTML = "";
-        return true;
     }
+
+    showError("AvailabilityError", "");
+    return true;
 }
 
+
+// Load Thana Based on District
 function loadThana() {
-    var district = document.getElementById("district").value;
+
+    var district = getValue("district");
     var thana = document.getElementById("thana");
+
+    if (thana == null) {
+        return;
+    }
 
     thana.innerHTML = '<option value="">All Thanas</option>';
 
     if (district == "Dhaka") {
+
         thana.innerHTML += '<option value="Dhanmondi">Dhanmondi</option>';
         thana.innerHTML += '<option value="Mirpur">Mirpur</option>';
+
     } else if (district == "Chattogram") {
+
         thana.innerHTML += '<option value="Pahartali">Pahartali</option>';
+
     } else if (district == "Cumilla") {
+
         thana.innerHTML += '<option value="Kotwali">Kotwali</option>';
+
     } else if (district == "Gazipur") {
+
         thana.innerHTML += '<option value="Tongi">Tongi</option>';
     }
 
-    document.getElementById("ThanaError").innerHTML = "";
-    document.getElementById("DistrictError").innerHTML = "";
+    showError("ThanaError", "");
+    showError("DistrictError", "");
 }
 
+
+// Reset Search Filters
 function resetFilters() {
-    document.getElementById("filterForm").reset();
 
-    document.getElementById("BloodError").innerHTML = "";
-    document.getElementById("DistrictError").innerHTML = "";
-    document.getElementById("ThanaError").innerHTML = "";
-    document.getElementById("BankError").innerHTML = "";
-    document.getElementById("AvailabilityError").innerHTML = "";
+    var form = document.getElementById("filterForm");
 
-    document.getElementById("thana").innerHTML =
-        '<option value="">All Thanas</option>';
+    if (form != null) {
+        form.reset();
+    }
+
+    showError("BloodError", "");
+    showError("DistrictError", "");
+    showError("ThanaError", "");
+    showError("BankError", "");
+    showError("AvailabilityError", "");
+
+    var thana = document.getElementById("thana");
+
+    if (thana != null) {
+        thana.innerHTML = '<option value="">All Thanas</option>';
+    }
 }
 
+
+// Search Donors Button
 function searchDonors() {
+
     if (document.getElementById("DonorSearch") != null) {
         return dashboardSearchDonors();
     }
 
-    return false;
+    return searchCollectData();
 }
 
 
-/* ==================================================
-   POST BLOOD REQUEST
-================================================== */
+/*  4. POST BLOOD REQUEST */
 
+
+// Submit Request
 function submitRequest() {
-    console.log("Submit Request button clicked");
 
     var valid = requestCollectData();
 
     if (valid == true) {
-        document.getElementById("Message").innerHTML =
-            "Blood request submitted successfully!";
+        showError("Message", "Blood request submitted successfully!");
     }
 
     return false;
 }
 
+
+// Request Validation Collection
 function requestCollectData() {
+
     var valid = true;
 
     if (requestValidateName() == false) valid = false;
@@ -479,105 +651,127 @@ function requestCollectData() {
     if (validateUrgency() == false) valid = false;
 
     if (valid == false) {
-        document.getElementById("Message").innerHTML = "";
+        showError("Message", "");
     }
 
     return valid;
 }
 
+
+// Patient Name
 function requestValidateName() {
-    var name = document.getElementById("PatientName").value;
+
+    var name = getValue("PatientName");
 
     if (name.trim().length < 6) {
-        document.getElementById("NameError").innerHTML =
-            "Patient name must have at least 6 characters.";
+        showError("NameError", "Patient name must have at least 6 characters.");
         return false;
-    } else {
-        document.getElementById("NameError").innerHTML = "";
-        return true;
     }
+
+    showError("NameError", "");
+    return true;
 }
 
+
+// Phone
 function requestValidatePhone() {
-    var phone = document.getElementById("Phone").value;
+
+    var phone = getValue("Phone");
 
     if (!/^\d{11}$/.test(phone)) {
-        document.getElementById("PhoneError").innerHTML =
-            "Phone number must contain exactly 11 digits.";
+        showError("PhoneError", "Phone number must contain exactly 11 digits.");
         return false;
-    } else {
-        document.getElementById("PhoneError").innerHTML = "";
-        return true;
     }
+
+    showError("PhoneError", "");
+    return true;
 }
 
+
+// Blood Group
 function requestValidateBloodGroup() {
-    var blood = document.getElementById("BloodGroup").value;
+
+    var blood = getValue("BloodGroup");
 
     if (blood == "") {
-        document.getElementById("BloodError").innerHTML =
-            "Please select a blood group.";
+        showError("BloodError", "Please select a blood group.");
         return false;
-    } else {
-        document.getElementById("BloodError").innerHTML = "";
-        return true;
     }
+
+    showError("BloodError", "");
+    return true;
 }
 
+
+// Units
 function validateUnits() {
-    var units = document.getElementById("Units").value;
 
-    if (units == "" || units < 1 || units > 20 || units % 1 != 0) {
-        document.getElementById("UnitsError").innerHTML =
-            "Units must be a whole number between 1 and 20.";
+    var units = getValue("Units");
+
+    if (
+        units == "" ||
+        units < 1 ||
+        units > 20 ||
+        units % 1 != 0
+    ) {
+        showError("UnitsError", "Units must be a whole number between 1 and 20.");
         return false;
-    } else {
-        document.getElementById("UnitsError").innerHTML = "";
-        return true;
     }
+
+    showError("UnitsError", "");
+    return true;
 }
 
+
+// Hospital
 function validateHospital() {
-    var hospital = document.getElementById("Hospital").value;
+
+    var hospital = getValue("Hospital");
 
     if (hospital.trim().length < 3) {
-        document.getElementById("HospitalError").innerHTML =
-            "Hospital name must have at least 3 characters.";
+        showError("HospitalError", "Hospital name must have at least 3 characters.");
         return false;
-    } else {
-        document.getElementById("HospitalError").innerHTML = "";
-        return true;
     }
+
+    showError("HospitalError", "");
+    return true;
 }
 
+
+// District
 function requestValidateDistrict() {
-    var district = document.getElementById("District").value;
+
+    var district = getValue("District");
 
     if (district == "") {
-        document.getElementById("DistrictError").innerHTML =
-            "Please select a district.";
+        showError("DistrictError", "Please select a district.");
         return false;
-    } else {
-        document.getElementById("DistrictError").innerHTML = "";
-        return true;
     }
+
+    showError("DistrictError", "");
+    return true;
 }
 
+
+// Address
 function requestValidateAddress() {
-    var address = document.getElementById("Address").value;
+
+    var address = getValue("Address");
 
     if (address.trim().length < 5) {
-        document.getElementById("AddressError").innerHTML =
-            "Address must have at least 5 characters.";
+        showError("AddressError", "Address must have at least 5 characters.");
         return false;
-    } else {
-        document.getElementById("AddressError").innerHTML = "";
-        return true;
     }
+
+    showError("AddressError", "");
+    return true;
 }
 
+
+// Required Date
 function validateDate() {
-    var date = document.getElementById("RequiredDate").value;
+
+    var date = getValue("RequiredDate");
 
     var today = new Date();
     var year = today.getFullYear();
@@ -590,29 +784,33 @@ function validateDate() {
     var todayDate = year + "-" + month + "-" + day;
 
     if (date == "" || date < todayDate) {
-        document.getElementById("DateError").innerHTML =
-            "Please select today or a future date.";
+        showError("DateError", "Please select today or a future date.");
         return false;
-    } else {
-        document.getElementById("DateError").innerHTML = "";
-        return true;
     }
+
+    showError("DateError", "");
+    return true;
 }
 
+
+// Urgency
 function validateUrgency() {
-    var urgency = document.getElementById("Urgency").value;
+
+    var urgency = getValue("Urgency");
 
     if (urgency == "") {
-        document.getElementById("UrgencyError").innerHTML =
-            "Please select the urgency level.";
+        showError("UrgencyError", "Please select the urgency level.");
         return false;
-    } else {
-        document.getElementById("UrgencyError").innerHTML = "";
-        return true;
     }
+
+    showError("UrgencyError", "");
+    return true;
 }
 
+
+// Reset Request Form
 function resetRequest() {
+
     var errorIds = [
         "NameError", "PhoneError", "BloodError", "UnitsError",
         "HospitalError", "DistrictError", "AddressError",
@@ -620,26 +818,21 @@ function resetRequest() {
     ];
 
     for (var i = 0; i < errorIds.length; i++) {
-        document.getElementById(errorIds[i]).innerHTML = "";
+        showError(errorIds[i], "");
     }
 
-    document.getElementById("PatientName").value = "";
-    document.getElementById("Phone").value = "";
-    document.getElementById("BloodGroup").value = "";
-    document.getElementById("Units").value = "";
-    document.getElementById("Hospital").value = "";
-    document.getElementById("District").value = "";
-    document.getElementById("Address").value = "";
-    document.getElementById("RequiredDate").value = "";
-    document.getElementById("Urgency").value = "";
-    document.getElementById("Information").value = "";
+    var form = document.getElementById("RequestForm");
+
+    if (form != null) {
+        form.reset();
+    }
 }
 
 
-/* ==================================================
-   MY REQUESTS
-================================================== */
+/* 5. PATIENT REQUEST HISTORY */
 
+
+// Sample Request Data
 var bloodRequests = [
     {
         id: "LF1024",
@@ -659,7 +852,10 @@ var bloodRequests = [
     }
 ];
 
+
+// Display Blood Requests
 function displayBloodRequests() {
+
     var tableBody = document.getElementById("requestTableBody");
 
     if (tableBody == null) {
@@ -673,6 +869,7 @@ function displayBloodRequests() {
     tableBody.innerHTML = "";
 
     for (var i = 0; i < bloodRequests.length; i++) {
+
         var request = bloodRequests[i];
 
         if (request.status == "Pending") {
@@ -695,35 +892,48 @@ function displayBloodRequests() {
             "</tr>";
     }
 
-    document.getElementById("totalCount").innerHTML = total;
-    document.getElementById("pendingCount").innerHTML = pending;
-    document.getElementById("completedCount").innerHTML = completed;
+    showError("totalCount", total);
+    showError("pendingCount", pending);
+    showError("completedCount", completed);
 }
 
 
 /* ==================================================
-   PAGE INITIALIZATION
+   6. PAGE INITIALIZATION
 ================================================== */
 
-// Dashboard
-if (document.getElementById("TotalRequests") != null) {
-    loadDashboard();
+
+// Dashboard Initialization
+if (
+    document.getElementById("metric_totalRequests") != null ||
+    document.getElementById("TotalRequests") != null
+) {
+    loadPatientDashboard();
 }
 
-// My Requests
+
+// Request History Initialization
 if (document.getElementById("requestTableBody") != null) {
     displayBloodRequests();
 }
 
-// Search Donors
+
+// Search Donors - District Change
+if (document.getElementById("district") != null) {
+
+    document.getElementById("district").onchange = loadThana;
+}
+
+
+// Search Donors - Apply Button (if present)
 if (document.getElementById("applyButton") != null) {
+
     document.getElementById("applyButton").onclick = searchCollectData;
 }
 
-if (document.getElementById("resetButton") != null) {
-    document.getElementById("resetButton").onclick = resetFilters;
-}
 
-if (document.getElementById("district") != null) {
-    document.getElementById("district").onchange = loadThana;
+// Search Donors - Reset Button (if present)
+if (document.getElementById("resetButton") != null) {
+
+    document.getElementById("resetButton").onclick = resetFilters;
 }
