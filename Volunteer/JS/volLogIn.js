@@ -8,6 +8,7 @@ function logIn_collect_data()
     
 }
 
+
 function validUsername() {
     let Username = document.getElementById("UserName").value.trim();
     let Error = document.getElementById("UsernameError");
