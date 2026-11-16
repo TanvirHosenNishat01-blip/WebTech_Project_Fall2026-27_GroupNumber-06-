@@ -1,72 +1,65 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Post Blood Request - LifeFlow</title>
+    <title>LifeFlow - Post Blood Request</title>
 
     <link rel="stylesheet" href="../design/Style.css">
+
     <script src="../JS/Common.js" defer></script>
-<script src="../JS/Patient.js" defer></script>
+    <script src="../JS/Patient.js" defer></script>
 </head>
 
 <body class="request-page">
 
+    <!-- Header -->
+    <div class="header">
+        <h1>LifeFlow</h1>
+        <h3>Patient Portal</h3>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="topnav">
+        <a href="PatientRegistration.html">Home</a>
+        <a href="PatientDashboard.html">Dashboard</a>
+        <a href="PostBloodRequest.html" class="active">Post Request</a>
+        <a href="SearchDonors.html">Search Donor</a>
+        <a href="PatientRequestHistory.html">Request History</a>
+    </div>
+
+    <!-- Main Container -->
     <div class="container">
-
-        <!-- Back Arrow -->
-        <div class="back-button">
-            <a href="PatientDashboard.html" title="Back to Dashboard">←</a>
-        </div>
-
-        <!-- Header -->
-        <div class="header">
-            <h1>LifeFlow</h1>
-            <h3>Post Blood Request</h3>
-        </div>
 
         <h2>Blood Request Information</h2>
 
-        <form id="RequestForm"
-              onsubmit="return submitRequest()"
-              novalidate>
+        <form id="RequestForm" onsubmit="return submitRequest()" novalidate>
 
             <!-- Patient Information -->
             <fieldset>
                 <legend>Patient Information</legend>
 
-                <table>
+                <table class="form-table">
                     <tr>
+                        <td><label for="PatientName">Patient Name:</label></td>
                         <td>
-                            <label for="PatientName">Patient Name:</label>
-                        </td>
-                        <td>
-                            <input type="text" id="PatientName"
-                                   name="PatientName"
-                                   placeholder="Enter Patient Name">
-                            <p id="NameError" class="error"></p>
+                            <input type="text" id="PatientName" name="PatientName"
+                                placeholder="Enter patient name">
+                            <span id="NameError" class="error-msg"></span>
                         </td>
                     </tr>
 
                     <tr>
+                        <td><label for="Phone">Phone Number:</label></td>
                         <td>
-                            <label for="Phone">Contact Number:</label>
-                        </td>
-                        <td>
-                            <input type="text" id="Phone"
-                                   name="Phone"
-                                   placeholder="Enter 11-digit Phone Number"
-                                   maxlength="11">
-                            <p id="PhoneError" class="error"></p>
+                            <input type="text" id="Phone" name="Phone"
+                                maxlength="11" placeholder="Enter phone number">
+                            <span id="PhoneError" class="error-msg"></span>
                         </td>
                     </tr>
 
                     <tr>
-                        <td>
-                            <label for="BloodGroup">Blood Group:</label>
-                        </td>
+                        <td><label for="BloodGroup">Blood Group:</label></td>
                         <td>
                             <select id="BloodGroup" name="BloodGroup">
                                 <option value="">Select Blood Group</option>
@@ -79,48 +72,37 @@
                                 <option value="AB+">AB+</option>
                                 <option value="AB-">AB-</option>
                             </select>
-                            <p id="BloodError" class="error"></p>
+                            <span id="BloodError" class="error-msg"></span>
                         </td>
                     </tr>
 
                     <tr>
+                        <td><label for="Units">Required Units:</label></td>
                         <td>
-                            <label for="Units">Required Units:</label>
-                        </td>
-                        <td>
-                            <input type="number" id="Units"
-                                   name="Units"
-                                   placeholder="Enter Required Units"
-                                   min="1" max="20">
-                            <p id="UnitsError" class="error"></p>
+                            <input type="number" id="Units" name="Units"
+                                min="1" max="20" placeholder="Enter required units">
+                            <span id="UnitsError" class="error-msg"></span>
                         </td>
                     </tr>
                 </table>
             </fieldset>
 
-            <br>
-
             <!-- Hospital Information -->
             <fieldset>
                 <legend>Hospital Information</legend>
 
-                <table>
+                <table class="form-table">
                     <tr>
+                        <td><label for="Hospital">Hospital Name:</label></td>
                         <td>
-                            <label for="Hospital">Hospital Name:</label>
-                        </td>
-                        <td>
-                            <input type="text" id="Hospital"
-                                   name="Hospital"
-                                   placeholder="Enter Hospital Name">
-                            <p id="HospitalError" class="error"></p>
+                            <input type="text" id="Hospital" name="Hospital"
+                                placeholder="Enter hospital name">
+                            <span id="HospitalError" class="error-msg"></span>
                         </td>
                     </tr>
 
                     <tr>
-                        <td>
-                            <label for="District">District:</label>
-                        </td>
+                        <td><label for="District">District:</label></td>
                         <td>
                             <select id="District" name="District">
                                 <option value="">Select District</option>
@@ -130,46 +112,36 @@
                                 <option value="Gazipur">Gazipur</option>
                                 <option value="Other">Other</option>
                             </select>
-                            <p id="DistrictError" class="error"></p>
+                            <span id="DistrictError" class="error-msg"></span>
                         </td>
                     </tr>
 
                     <tr>
+                        <td><label for="Address">Hospital Address:</label></td>
                         <td>
-                            <label for="Address">Hospital Address:</label>
-                        </td>
-                        <td>
-                            <textarea id="Address" name="Address"
-                                      rows="3"
-                                      placeholder="Enter Hospital Address"></textarea>
-                            <p id="AddressError" class="error"></p>
+                            <textarea id="Address" name="Address" rows="3" style="resize: none;"
+                                placeholder="Enter hospital address"></textarea>
+                            <span id="AddressError" class="error-msg"></span>
                         </td>
                     </tr>
                 </table>
             </fieldset>
 
-            <br>
-
             <!-- Request Details -->
             <fieldset>
                 <legend>Request Details</legend>
 
-                <table>
+                <table class="form-table">
                     <tr>
+                        <td><label for="RequiredDate">Required Date:</label></td>
                         <td>
-                            <label for="RequiredDate">Required Date:</label>
-                        </td>
-                        <td>
-                            <input type="date" id="RequiredDate"
-                                   name="RequiredDate">
-                            <p id="DateError" class="error"></p>
+                            <input type="date" id="RequiredDate" name="RequiredDate">
+                            <span id="DateError" class="error-msg"></span>
                         </td>
                     </tr>
 
                     <tr>
-                        <td>
-                            <label for="Urgency">Urgency Level:</label>
-                        </td>
+                        <td><label for="Urgency">Urgency Level:</label></td>
                         <td>
                             <select id="Urgency" name="Urgency">
                                 <option value="">Select Urgency</option>
@@ -177,47 +149,34 @@
                                 <option value="Urgent">Urgent</option>
                                 <option value="Critical">Critical</option>
                             </select>
-                            <p id="UrgencyError" class="error"></p>
+                            <span id="UrgencyError" class="error-msg"></span>
                         </td>
                     </tr>
 
                     <tr>
+                        <td><label for="Information">Additional Information:</label></td>
                         <td>
-                            <label for="Information">
-                                Additional Information:
-                            </label>
-                        </td>
-                        <td>
-                            <textarea id="Information"
-                                      name="Information"
-                                      rows="3"
-                                      placeholder="Optional Information"></textarea>
+                            <textarea id="Information" name="Information" rows="3" style="resize: none;"
+                                placeholder="Enter additional information (optional)"></textarea>
                         </td>
                     </tr>
                 </table>
             </fieldset>
 
-            <br>
-
-            <!-- Form Buttons -->
-            <input type="button"
-                   id="Reset"
-                   value="Reset"
-                   onclick="resetRequest()">
-
-            <input type="submit"
-                   id="Submit"
-                   value="Submit Request">
+            <!-- Buttons -->
+            <div class="btn-group">
+                <input type="button" id="save" value="Submit" onclick="saveProfile()">
+                <input type="button" value="Reset" onclick="resetRequest()">
+            </div>
 
             <p id="Message"></p>
 
         </form>
+    </div>
 
-        <!-- Footer -->
-        <div class="footer">
-            <h5>LifeFlow - Blood Donation Network </h5>
-        </div>
-
+    <!-- Footer -->
+    <div class="footer">
+        <h5>LifeFlow - Blood Donation Network</h5>
     </div>
 
 </body>
