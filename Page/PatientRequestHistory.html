@@ -4,60 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../design/Style.css">
-    <script src="../JS/Common.js" defer></script>
-<script src="../JS/Patient.js" defer></script>
-
     <title>My Requests - LifeFlow</title>
+
+    <link rel="stylesheet" href="../design/Style.css">
+
+    <script src="../JS/Common.js" defer></script>
+    <script src="../JS/Patient.js" defer></script>
+
 </head>
 
 <body class="my-requests-page">
 
+    <!-- Header -->
+    <div class="header">
+        <h1>LifeFlow</h1>
+        <h3>Patient Portal</h3>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="topnav">
+        <a href="PatientRegistration.html">Home</a>
+        <a href="PatientDashboard.html">Dashboard</a>
+        <a href="PostBloodRequest.html">Post Request</a>
+        <a href="SearchDonors.html">Search Donor</a>
+        <a href="PatientRequestHistory.html" class="active">Request History</a>
+    </div>
+
+    <!-- Main Container -->
     <div class="container">
 
-        <!-- Header -->
-        <div class="header">
-            <h1>LifeFlow</h1>
-            <h3>Real-Time Blood Link &amp; Emergency Network</h3>
-        </div>
+        <h2>My Requests</h2>
 
-        <!-- Page Heading and Back Button -->
-        
-
-           <div class="my-requests-heading">
-
-    <a href=" PatientDashboard.html"
-       class="my-requests-back"
-       title="Back to Dashboard">&#8592;</a>
-
-    <h2>My Requests</h2>
-
-</div>
-
-            
-
-        </div>
-
-        <p class="page-description">
-            Track your blood requests
+        <p class="dashboard-description">
+            Track your blood requests.
         </p>
 
         <!-- Summary Cards -->
-        <div class="summary">
+        <div class="card-grid">
 
-            <div class="summary-card">
-                <h3 id="totalCount">06</h3>
-                <p>Total Requests</p>
+            <div class="metric-card">
+                <h3>Total Requests</h3>
+                <p id="totalCount">06</p>
             </div>
 
-            <div class="summary-card">
-                <h3 id="pendingCount">02</h3>
-                <p>Pending</p>
+            <div class="metric-card">
+                <h3>Pending Requests</h3>
+                <p id="pendingCount" style="color: #ea580c;">02</p>
             </div>
 
-            <div class="summary-card">
-                <h3 id="completedCount">03</h3>
-                <p>Completed</p>
+            <div class="metric-card">
+                <h3>Completed Requests</h3>
+                <p id="completedCount" style="color: #16a34a;">03</p>
             </div>
 
         </div>
@@ -67,9 +64,10 @@
             Blood Request History
         </h2>
 
+        <!-- Request Table -->
         <div class="request-table-container">
 
-            <table id="requestTable">
+            <table id="requestTable" class="data-table">
 
                 <thead>
                     <tr>
@@ -84,7 +82,7 @@
                 </thead>
 
                 <tbody id="requestTableBody">
-                    
+                    <!-- JavaScript will display request records here -->
                 </tbody>
 
             </table>
@@ -94,11 +92,11 @@
         <!-- Request Details -->
         <div id="requestDetails"></div>
 
-        <!-- Footer -->
-        <div class="footer">
-            <h5>LifeFlow - Blood Donation Network </h5>
-        </div>
+    </div>
 
+    <!-- Footer -->
+    <div class="footer">
+        <h5>LifeFlow - Blood Donation Network</h5>
     </div>
 
 </body>
