@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -11,13 +12,27 @@
     <title>Registration - LifeFlow</title>
 </head>
 
-<body>
-    <div class="container">
+<body class="patient">
 
-        <div class="header">
-            <h1>LifeFlow</h1>
-            <h3>Patient Registration</h3>
-        </div>
+    <!-- Top banner -->
+    <div class="header">
+        <h1>LifeFlow</h1>
+        <h3>Patient Portal</h3>
+    </div>
+
+
+    <!-- Navigation bar -->
+    <div class="topnav">
+        <a href="PatientRegistration.html" class="active">Home</a>
+        <a href="PatientDashboard.html">Dashboard</a>
+        <a href="PostBloodRequest.html">Post Request</a>
+        <a href="SearchDonors.html">Search Donor</a>
+        <a href="PatientRequestHistory.html">Patient Request History</a>
+    </div>
+
+
+    <!-- Registration form container -->
+    <div class="container">
 
         <h2>Registration Information</h2>
 
@@ -26,7 +41,7 @@
             <fieldset>
                 <legend>Personal Information</legend>
 
-                <table>
+                <table class="form-table">
                     <tr>
                         <td>
                             <label for="PatientName">Patient Name:</label>
@@ -97,10 +112,10 @@
                             <label for="Address">Address:</label>
                         </td>
                         <td>
-                            <textarea id="Address" name="Address"
-                                placeholder="Enter Your Address"></textarea>
+                            <textarea id="Address" name="Address" style="resize: none;"
+                                placeholder="Enter Your Address" ></textarea>
                             <p id="AddressError"></p>
-                        </td>
+                        </td> 
                     </tr>
 
                     <tr>
@@ -126,7 +141,7 @@
             <fieldset>
                 <legend>User Profile</legend>
 
-                <table>
+                <table class="form-table">
                     <tr>
                         <td>
                             <label for="Username">Username:</label>
@@ -168,22 +183,28 @@
             </fieldset>
 
 
-            <input type="button" id="save" value="Save"
-                onclick="saveProfile()">
+            <!-- Action buttons -->
+            <div class="btn-group">
 
-            <input type="button" id="Reset" value="Reset"
-                onclick="resetProfile()">
+                <input type="button" id="save" value="Save"
+                    onclick="saveProfile()">
 
-            <input type="submit" id="signup" value="Sign Up">
+                <input type="button" id="Reset" value="Reset"
+                    onclick="resetProfile()">
+
+            </div>
 
             <p id="Message"></p>
 
         </form>
 
-        <div class="footer">
-            <h5>LifeFlow - Blood Donation Network </h5>
-        </div>
-
     </div>
+
+
+    <!-- Footer -->
+    <div class="footer">
+        <h5>LifeFlow - Blood Donation Network</h5>
+    </div>
+
 </body>
 </html>
