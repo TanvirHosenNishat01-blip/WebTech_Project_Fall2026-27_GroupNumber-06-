@@ -7,6 +7,7 @@ function history_collect_data()
     return false;
 }
 
+
 function validDonationDate() 
 {
     let date = document.getElementById("DDate").value;
