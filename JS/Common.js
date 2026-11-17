@@ -1,45 +1,57 @@
+
+//   LifeFlow - Admin Portal Common JavaScript
+//   Handles shared form validation, UI interactions, and utility functions across admin pages.
+ 
+
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("LifeFlow Portal Initialized successfully.");
+    console.log("LifeFlow Admin Portal Initialized successfully.");
+
+    // Universal Form Validation Helper
+    const forms = document.querySelectorAll("form");
+    forms.forEach(form => {
+        form.addEventListener("submit", function (e) {
+            let isValid = true;
+            
+            // Validate required text/email/password inputs
+            const requiredInputs = form.querySelectorAll("input[required], select[required], textarea[required]");
+            requiredInputs.forEach(input => {
+                const errorElement = document.getElementById(input.id + "Error") || input.parentElement.querySelector(".error-msg");
+                
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.style.borderColor = "#dc2626";
+                    if (errorElement) {
+                        errorElement.textContent = "This field cannot be empty.";
+                    }
+                } else {
+                    input.style.borderColor = "#cbd5e1";
+                    if (errorElement) {
+                        errorElement.textContent = "";
+                    }
+                }
+            });
+
+            if (!isValid) {
+                e.preventDefault();
+                alert("Please fill in all required fields correctly before submitting.");
+            }
+        });
+    });
 });
 
-// Universal Form Validation on Button Click
-function validateForm() {
-    let isValid = true;
-    
-    // Find all required inputs across the current form
-    const requiredInputs = document.querySelectorAll("input[required], select[required], textarea[required]");
-    
-    requiredInputs.forEach(input => {
-        // Find the error element associated with this input
-        const errorElement = document.getElementById(input.id + "Error") || input.parentElement.querySelector(".error-msg");
-        
-        if (!input.value.trim()) {
-            isValid = false;
-            input.style.borderColor = "#dc2626"; // Red border
-            if (errorElement) {
-                errorElement.textContent = "Please fill up"; // Show error text
-            }
-        } else {
-            input.style.borderColor = "#cbd5e1"; // Normal border
-            if (errorElement) {
-                errorElement.textContent = ""; // Clear error text
-            }
-        }
-    });
-
-    if (!isValid) {
-        alert("Please fill in all required fields correctly before submitting.");
-    } else {
-        alert("Validation successful!");
-    }
-}
-
-// Confirmation prompt for deleting or managing entities
+/**
+ * Confirmation prompt for deleting or suspending users/hospitals
+ * @param {string} actionType - The action being performed (e.g., 'suspend', 'verify', 'delete')
+ * @returns {boolean}
+ */
 function confirmAdminAction(actionType) {
-    return confirm(`Are you sure you want to ${actionType} this entity?`);
+    return confirm(`Are you sure you want to ${actionType} this entity? This action will be logged in the system audit trail.`);
 }
 
-// Utility function to toggle visibility of elements
+/**
+ * Utility function to toggle visibility of modal or panel elements
+ * @param {string} elementId 
+ */
 function toggleElementVisibility(elementId) {
     const targetElement = document.getElementById(elementId);
     if (targetElement) {
