@@ -1,34 +1,64 @@
-// Initialize default dummy data into browser localStorage if not already present
-function initializeMockData() {
-    // 1. Setup emergency transfusion requests
-    if (!localStorage.getItem("lf_requests")) {
-        const dummyRequests = [
-            { id: "REQ-101", patient: "Kamal Uddin", hospital: "Dhaka Medical College", bloodGroup: "O+", units: 2, urgency: "Critical", status: "Pending" },
-            { id: "REQ-102", patient: "Sadia Sultana", hospital: "Kurmitola General Hospital", bloodGroup: "A+", units: 1, urgency: "Scheduled", status: "Pending" },
-            { id: "REQ-103", patient: "Tanvir Ahmed", hospital: "Evercare Hospital", bloodGroup: "B-", units: 3, urgency: "Critical", status: "Verified" }
-        ];
-        localStorage.setItem("lf_requests", JSON.stringify(dummyRequests));
-    }
 
-    // 2. Setup registered donors and users
-    if (!localStorage.getItem("lf_users")) {
-        const dummyUsers = [
-            { id: "DON-01", name: "Fahim Hasan", role: "Donor", bloodGroup: "O+", contact: "01711112233", status: "Active" },
-            { id: "DON-02", name: "Sumaiya Akter", role: "Donor", bloodGroup: "B+", contact: "01822334455", status: "Active" },
-            { id: "REQ-01", name: "Rahim Chowdhury", role: "Requester", bloodGroup: "A-", contact: "01933445566", status: "Active" }
-        ];
-        localStorage.setItem("lf_users", JSON.stringify(dummyUsers));
-    }
+//   LifeFlow - Admin Portal Common JavaScript
+//   Handles shared form validation, UI interactions, and utility functions across admin pages.
+ 
 
-    // 3. Setup partner hospitals and inventory
-    if (!localStorage.getItem("lf_hospitals")) {
-        const dummyHospitals = [
-            { id: "HOSP-01", name: "Popular Blood Bank", district: "Dhaka", thana: "Dhanmondi", stockUnits: 45, status: "Approved" },
-            { id: "HOSP-02", name: "Central Hospital", district: "Dhaka", thana: "Green Road", stockUnits: 18, status: "Approved" }
-        ];
-        localStorage.setItem("lf_hospitals", JSON.stringify(dummyHospitals));
-    }
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("LifeFlow Admin Portal Initialized successfully.");
+
+    // Universal Form Validation Helper
+    const forms = document.querySelectorAll("form");
+    forms.forEach(form => {
+        form.addEventListener("submit", function (e) {
+            let isValid = true;
+            
+            // Validate required text/email/password inputs
+            const requiredInputs = form.querySelectorAll("input[required], select[required], textarea[required]");
+            requiredInputs.forEach(input => {
+                const errorElement = document.getElementById(input.id + "Error") || input.parentElement.querySelector(".error-msg");
+                
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.style.borderColor = "#dc2626";
+                    if (errorElement) {
+                        errorElement.textContent = "This field cannot be empty.";
+                    }
+                } else {
+                    input.style.borderColor = "#cbd5e1";
+                    if (errorElement) {
+                        errorElement.textContent = "";
+                    }
+                }
+            });
+
+            if (!isValid) {
+                e.preventDefault();
+                alert("Please fill in all required fields correctly before submitting.");
+            }
+        });
+    });
+});
+
+/**
+ * Confirmation prompt for deleting or suspending users/hospitals
+ * @param {string} actionType - The action being performed (e.g., 'suspend', 'verify', 'delete')
+ * @returns {boolean}
+ */
+function confirmAdminAction(actionType) {
+    return confirm(`Are you sure you want to ${actionType} this entity? This action will be logged in the system audit trail.`);
 }
 
-// Execute initial storage setup on script load
-initializeMockData();
+/**
+ * Utility function to toggle visibility of modal or panel elements
+ * @param {string} elementId 
+ */
+function toggleElementVisibility(elementId) {
+    const targetElement = document.getElementById(elementId);
+    if (targetElement) {
+        if (targetElement.style.display === "none" || targetElement.style.display === "") {
+            targetElement.style.display = "block";
+        } else {
+            targetElement.style.display = "none";
+        }
+    }
+}

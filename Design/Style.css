@@ -1,4 +1,4 @@
-/* Global reset and default font */
+/* --- Global Resets & Base Styles --- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,7 +11,7 @@ body {
     padding-bottom: 40px;
 }
 
-/* Header banner style */
+/* --- Header Banner Style --- */
 .header {
     background-color: #1e3a8a;
     color: white;
@@ -19,14 +19,13 @@ body {
     padding: 20px 0;
 }
 
-/* Logo image alignment */
 #logo {
     display: block;
     margin: 15px auto 5px auto;
     max-height: 80px;
 }
 
-/* Navigation bar styling */
+/* --- Navigation Bar Styling --- */
 .topnav {
     background-color: #0f172a;
     overflow: hidden;
@@ -54,7 +53,7 @@ body {
     color: white;
 }
 
-/* Main content wrapper */
+/* --- Main Content Wrapper --- */
 .container {
     width: 85%;
     max-width: 1000px;
@@ -65,7 +64,7 @@ body {
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-/* Fieldset and legend styling */
+/* --- Fieldset and Legend Styling --- */
 fieldset {
     border: 1px solid #cbd5e1;
     border-radius: 6px;
@@ -78,9 +77,12 @@ legend {
     color: #1e3a8a;
     padding: 0 8px;
     font-size: 16px;
+    background-color: #1e3a8a; /* Ensures visual consistency */
+    color: white;
+    border-radius: 4px;
 }
 
-/* Table layout for forms */
+/* --- Table Layout for Forms --- */
 table.form-table {
     width: 100%;
     border-collapse: collapse;
@@ -97,11 +99,12 @@ table.form-table td:first-child {
     color: #334155;
 }
 
-/* Inputs and select drop-down elements */
+/* --- Inputs and Select Drop-down Elements --- */
 input[type="text"],
 input[type="email"],
 input[type="password"],
-select {
+select,
+textarea {
     width: 90%;
     padding: 8px 10px;
     border: 1px solid #94a3b8;
@@ -112,12 +115,18 @@ select {
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
-select:focus {
+select:focus,
+textarea:focus {
     outline: none;
     border-color: #2563eb;
 }
 
-/* Validation error text */
+textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+/* --- Validation Error Text --- */
 .error-msg {
     color: #dc2626;
     font-size: 12px;
@@ -126,7 +135,7 @@ select:focus {
     min-height: 15px;
 }
 
-/* Buttons styling */
+/* --- Buttons Styling --- */
 .btn-group {
     text-align: center;
     margin-top: 15px;
@@ -140,6 +149,8 @@ select:focus {
     border-radius: 4px;
     cursor: pointer;
     margin: 0 6px;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .btn-primary {
@@ -175,7 +186,7 @@ select:focus {
     font-size: 12px;
 }
 
-/* Metric summary cards */
+/* --- Metric Summary Cards --- */
 .card-grid {
     display: flex;
     gap: 20px;
@@ -204,14 +215,15 @@ select:focus {
     color: #0f172a;
 }
 
-/* Data display tables */
+/* --- Data Display Tables --- */
 table.data-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
 }
 
-table.data-table th, table.data-table td {
+table.data-table th, 
+table.data-table td {
     border: 1px solid #cbd5e1;
     padding: 10px 12px;
     text-align: left;
@@ -227,7 +239,7 @@ table.data-table tr:nth-child(even) {
     background-color: #f8fafc;
 }
 
-/* Status badge indicators */
+/* --- Status Badge Indicators --- */
 .badge {
     padding: 4px 8px;
     border-radius: 4px;
@@ -255,7 +267,7 @@ table.data-table tr:nth-child(even) {
     color: #1e40af;
 }
 
-/* Footer note */
+/* --- Footer Note --- */
 .footer-text {
     text-align: center;
     margin-top: 30px;
