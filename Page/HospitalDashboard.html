@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>LifeFlow - Hospital Dashboard</title>
+  <link rel="stylesheet" href="../Design/Style.css">
+   <script src="../JS/Common.js"></script>
+    <script src="../JS/HospitalDashbooard.js"></script>
+</head>
+<body>
+    <!-- Top Navigation Bar linked to the 5 pages -->
+    <div class="topnav">
+        <a href="../../index.html">Home</a>
+        <a href="HospitalRegistration.html">Registration</a>
+        <a href="HospitalDashboard.html" class="active">Dashboard</a>
+        <a href="HospitalInventory.html">Inventory</a>
+        <a href="HospitalRequisitions.html">Requisitions</a>
+        <a href="HospitalEmergencyBroadcast.html">Emergency Broadcast</a>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>LifeFlow</h1>
+            <h3>Hospital Dashboard</h3>
+        </div>
+
+        <h2>System Overview</h2>
+
+        <!-- 5 Dashboard Cards -->
+        <div class="card-grid">
+            <div class="metric-card">
+                <h3>Emergency Queue</h3>
+                <p id="card_emergency">0</p>
+            </div>
+            <div class="metric-card">
+                <h3>Total Blood Bags</h3>
+                <p id="card_blood_bags">0</p>
+            </div>
+            <div class="metric-card">
+                <h3>Total Hospitals Registered</h3>
+                <p id="card_hospitals">0</p>
+            </div>
+            <div class="metric-card">
+                <h3>Active Requisitions</h3>
+                <p id="card_requisitions">0</p>
+            </div>
+            <div class="metric-card">
+                <h3>System Status</h3>
+                <p id="card_status">Optimal</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

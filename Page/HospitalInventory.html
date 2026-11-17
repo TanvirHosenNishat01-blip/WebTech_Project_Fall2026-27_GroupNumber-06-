@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>LifeFlow - Hospital Inventory</title>
+    <link rel="stylesheet" href="../Design/Style.css">
+    <script src="../JS/Common.js"></script>
+    <script src="../JS/HospitalInventory.js"></script>
+</head>
+<body>
+    <!-- Top Navigation Bar linked to the 5 pages -->
+    <div class="topnav">
+        <a href="../../index.html">Home</a>
+        <a href="HospitalRegistration.html">Registration</a>
+        <a href="HospitalDashboard.html">Dashboard</a>
+        <a href="HospitalInventory.html" class="active">Inventory</a>
+        <a href="HospitalRequisitions.html">Requisitions</a>
+        <a href="HospitalEmergencyBroadcast.html">Emergency Broadcast</a>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>LifeFlow</h1>
+            <h3>Hospital Inventory</h3>
+        </div>
+
+        <h2>Blood Stock Management</h2>
+        
+        <form>
+            <fieldset>
+                <legend>Add / Update Stock</legend>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="BloodGroup">Blood Group</label>
+                        </td>
+                        <td>
+                            <select id="BloodGroup" name="BloodGroup" required>
+                                <option value="">Select Blood Group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                            <p class="error-msg" id="Blood GroupError"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="NumberOfBags">Number of Bags</label>
+                        </td>
+                        <td>
+                            <input type="number" id="NumberOfBags" name="NumberOfBags" placeholder="Enter number of bags" required>
+                            <p class="error-msg" id="Number of BagsError"></p>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+            <input type="button" id="Add" value="Add Stock" onclick="addStock()">
+            <input type="button" id="Reset" value="Reset" onclick="resetStock()">
+
+            <p id="Message"></p>
+        </form>
+
+        <h2>Inventory List</h2>
+        
+        <table border="1">
+            <tr>
+                <th>Blood Group</th>
+                <th>Available Bags</th>
+                <th>Action</th>
+            </tr>
+            <tbody id="inventoryTableBody">
+                <tr>
+                    <td>A+</td>
+                    <td>12</td>
+                    <td><input type="button" value="Delete" onclick="deleteStock(this)"></td>
+                </tr>
+                <tr>
+                    <td>O-</td>
+                    <td>5</td>
+                    <td><input type="button" value="Delete" onclick="deleteStock(this)"></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>

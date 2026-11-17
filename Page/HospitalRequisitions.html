@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>LifeFlow - Hospital Requisitions</title>
+    <link rel="stylesheet" href="../Design/Style.css">
+    <script src="../JS/Common.js"></script>
+    <script src="../JS/HospitalRequisitons.js"></script>
+</head>
+<body>
+    <!-- Top Navigation Bar linked to the 5 pages -->
+    <div class="topnav">
+        <a href="../../index.html">Home</a>
+        <a href="HospitalRegistration.html">Registration</a>
+        <a href="HospitalDashboard.html">Dashboard</a>
+        <a href="HospitalInventory.html">Inventory</a>
+        <a href="HospitalRequisitions.html" class="active">Requisitions</a>
+        <a href="HospitalEmergencyBroadcast.html">Emergency Broadcast</a>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>LifeFlow</h1>
+            <h3>Hospital Requisitions</h3>
+        </div>
+
+        <h2>New Blood Requisition</h2>
+        
+        <form>
+            <fieldset>
+                <legend>Requisition Details</legend>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="EmergencyRequest">Emergency Request</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" id="EmergencyRequest" name="EmergencyRequest">
+                            <label for="EmergencyRequest">Patient critical, need urgent</label>
+                            <p class="error-msg" id="Emergency RequestError"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="BagAPlus">A+ Bags</label></td>
+                        <td>
+                            <input type="number" id="BagAPlus" name="BagAPlus" value="0" min="0" placeholder="0">
+                            <p class="error-msg" id="A+Error"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="BagAMinus">A- Bags</label></td>
+                        <td>
+                            <input type="number" id="BagAMinus" name="BagAMinus" value="0" min="0" placeholder="0">
+                            <p class="error-msg" id="A-Error"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="BagBPlus">B+ Bags</label></td>
+                        <td>
+                            <input type="number" id="BagBPlus" name="BagBPlus" value="0" min="0" placeholder="0">
+                            <p class="error-msg" id="B+Error"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="BagBMinus">B- Bags</label></td>
+                        <td>
+                            <input type="number" id="BagBMinus" name="BagBMinus" value="0" min="0" placeholder="0">
+                            <p class="error-msg" id="B-Error"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="BagABPlus">AB+ Bags</label></td>
+                        <td>
+                            <input type="number" id="BagABPlus" name="BagABPlus" value="0" min="0" placeholder="0">
+                            <p class="error-msg" id="AB+Error"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="BagABMinus">AB- Bags</label></td>
+                        <td>
+                            <input type="number" id="BagABMinus" name="BagABMinus" value="0" min="0" placeholder="0">
+                            <p class="error-msg" id="AB-Error"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="BagOPlus">O+ Bags</label></td>
+                        <td>
+                            <input type="number" id="BagOPlus" name="BagOPlus" value="0" min="0" placeholder="0">
+                            <p class="error-msg" id="O+Error"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="BagOMinus">O- Bags</label></td>
+                        <td>
+                            <input type="number" id="BagOMinus" name="BagOMinus" value="0" min="0" placeholder="0">
+                            <p class="error-msg" id="O-Error"></p>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+            <input type="button" id="Submit" value="Submit Requisition" onclick="submitRequisition()">
+            <input type="button" id="Reset" value="Reset" onclick="resetRequisition()">
+
+            <p id="Message"></p>
+        </form>
+
+        <h2>Requisition Status List</h2>
+        
+        <table border="1">
+            <tr>
+                <th>Requisition ID</th>
+                <th>Blood Details</th>
+                <th>Urgency</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <tbody id="requisitionTableBody">
+                <tr>
+                    <td>REQ-001</td>
+                    <td>A+: 2 bags, O-: 1 bag</td>
+                    <td>Urgent</td>
+                    <td>Pending</td>
+                    <td><input type="button" value="Delete" onclick="deleteRequisition(this)"></td>
+                </tr>
+                <tr>
+                    <td>REQ-002</td>
+                    <td>B+: 4 bags</td>
+                    <td>Normal</td>
+                    <td>Confirmed</td>
+                    <td><input type="button" value="Delete" onclick="deleteRequisition(this)"></td>
+                </tr>
+                <tr>
+                    <td>REQ-003</td>
+                    <td>AB+: 1 bag</td>
+                    <td>Normal</td>
+                    <td>Delivered</td>
+                    <td><input type="button" value="Delete" onclick="deleteRequisition(this)"></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>

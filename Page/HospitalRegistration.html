@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Registration Form</title>
+    <link rel="stylesheet" href="../Design/Style.css">
+    <script src="../JS/Common.js"></script>
+    <script src="../JS/HospitalRegistration.js"></script>
+</head>
+
+<body>
+<!-- Top Navigation Bar linked to the 5 pages -->
+<div class="topnav">
+    <a href="../../index.html">Home</a>
+    <a href="HospitalRegistration.html" class="active">Registration</a>
+    <a href="HospitalDashboard.html">Dashboard</a>
+    <a href="HospitalInventory.html">Inventory</a>
+    <a href="HospitalRequisitions.html">Requisitions</a>
+    <a href="HospitalEmergencyBroadcast.html">Emergency Broadcast</a>
+</div>
+
+<div class="container">
+    <div class="header">
+        <h1>LifeFlow</h1>
+        <h3>Hospital Registration</h3>
+    </div>
+    <h2>Hospital Information</h2>
+    <form onsubmit="return saveProfile()">
+        <fieldset>
+            <legend>Hospital Profile Information</legend>
+            <table>
+                <tr>
+                    <td>
+                        <label for="HospitalName">Hospital Name</label>
+                    </td>
+                    <td>
+                        <input type="text" id="HospitalName" name="HospitalName" placeholder="Enter Your Hospital Name" required>
+                        <p class="error-msg" id="HospitalNameError"></p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label for="RegistrationNumber">Registration Number</label>
+                    </td>
+                    <td>
+                        <input type="text" id="RegistrationNumber" name="RegistrationNumber" placeholder="Enter your Hospital's valid Registration number" required>
+                        <p class="error-msg" id="RegistrationNumberError"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="FacilityType">Facility Type</label>
+                    </td>
+                    <td>
+                        <select id="FacilityType" name="FacilityType" required>
+                            <option value="">Select Facility Type</option>
+                            <option value="General Hospital">General Hospital</option>
+                            <option value="Specialized Hospital">Specialized Hospital</option>
+                            <option value="Emergency Care Unit">Emergency Care Unit</option>
+                            <option value="Community Health Center">Community Health Center</option>
+                        </select>
+                        <p class="error-msg" id="FacilityTypeError"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="PrimaryContact">Primary Contact</label></td>
+                    <td>
+                        <input type="text" id="PrimaryContact" name="PrimaryContact" placeholder="Enter your Hospital's valid contact number" required>
+                        <p class="error-msg" id="PrimaryContactError"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="DepartmentNumber">Department Number</label></td>
+                    <td>
+                        <input type="number" id="DepartmentNumber" name="DepartmentNumber" placeholder="How many Department" required>
+                        <p class="error-msg" id="DepartmentNumberError"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="HospitalAddress">Hospital Address</label></td>
+                    <td>
+                        <input type="text" id="HospitalAddress" name="HospitalAddress" placeholder="Enter your Hospital's valid Address" required>
+                        <p class="error-msg" id="HospitalAddressError"></p>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+
+        <fieldset>
+            <legend>Hospital Login</legend>
+            <table>
+                <tr>
+                    <td>
+                        <label for="HospitalUsername">Hospital username:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="HospitalUsername" name="HospitalUsername" placeholder="Enter Your Username" required>
+                        <p class="error-msg" id="HospitalUsernameError"></p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label for="Password">Password:</label>
+                    </td>
+                    <td>
+                        <input type="password" id="Password" name="Password" placeholder="Enter Your Password" required>
+                        <p class="error-msg" id="PasswordError"></p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label for="ConfirmPassword">Confirm Password:</label>
+                    </td>
+                    <td>
+                        <input type="password" id="ConfirmPassword" name="ConfirmPassword" placeholder="Confirm Your Password" required>
+                        <p class="error-msg" id="ConfirmPasswordError"></p>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+
+        <input type="button" id="save" value="Save" onclick="saveProfile()">
+        <input type="button" id="Reset" value="Reset" onclick="resetProfile()">
+        <input type="submit" id="signup" value="Sign Up">
+
+        <p id="Message"></p>
+    </form>
+</div>
+
+</body>
+</html>
