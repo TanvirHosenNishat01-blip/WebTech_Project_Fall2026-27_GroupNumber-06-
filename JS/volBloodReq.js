@@ -11,3 +11,4 @@ function show_accept2()
     Show2.innerHTML = "Accepted";
     return false;
 }
+
