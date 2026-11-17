@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>LifeFlow - Emergency Broadcast</title>
+    <link rel="stylesheet" href="../Design/Style.css">
+    <script src="../JS/Common.js"></script>
+    <script src="../JS/HospitalEmergencyBroadcast.js"></script>
+</head>
+<body>
+    <!-- Top Navigation Bar linked to the 5 pages -->
+    <div class="topnav">
+        <a href="../../index.html">Home</a>
+        <a href="HospitalRegistration.html">Registration</a>
+        <a href="HospitalDashboard.html">Dashboard</a>
+        <a href="HospitalInventory.html">Inventory</a>
+        <a href="HospitalRequisitions.html">Requisitions</a>
+        <a href="HospitalEmergencyBroadcast.html" class="active">Emergency Broadcast</a>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>LifeFlow</h1>
+            <h3>Emergency Broadcast</h3>
+        </div>
+
+        <h2>Create Emergency Broadcast</h2>
+        
+        <form>
+            <fieldset>
+                <legend>Broadcast Information</legend>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="EmergencyLevel">Emergency Level</label>
+                        </td>
+                        <td>
+                            <select id="EmergencyLevel" name="EmergencyLevel" required>
+                                <option value="">Select Emergency Level</option>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Critical">Critical</option>
+                            </select>
+                            <p class="error-msg" id="Emergency LevelError"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="BroadcastBloodGroup">Blood Group</label>
+                        </td>
+                        <td>
+                            <select id="BroadcastBloodGroup" name="BroadcastBloodGroup" required>
+                                <option value="">Select Blood Group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                            <p class="error-msg" id="Blood GroupError"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="MessageDescription">Message Description</label>
+                        </td>
+                        <td>
+                            <input type="text" id="MessageDescription" name="MessageDescription" placeholder="Enter emergency details" required>
+                            <p class="error-msg" id="Message DescriptionError"></p>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+            <input type="button" id="Broadcast" value="Send Broadcast" onclick="sendBroadcast()">
+            <input type="button" id="Reset" value="Reset" onclick="resetBroadcast()">
+
+            <p id="Message"></p>
+        </form>
+
+        <h2>Current Emergency Broadcasts</h2>
+        
+        <table border="1">
+            <tr>
+                <th>Emergency Level</th>
+                <th>Blood Group</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+            <tbody id="broadcastTableBody">
+                <tr>
+                    <td>Critical</td>
+                    <td>O-</td>
+                    <td>Urgent need for accident victims in trauma center.</td>
+                    <td><input type="button" value="Delete" onclick="deleteBroadcast(this)"></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>
