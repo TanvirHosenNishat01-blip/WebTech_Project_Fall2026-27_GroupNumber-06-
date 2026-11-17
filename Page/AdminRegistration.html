@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow - Admin Registration</title>
+    <link rel="stylesheet" href="../Design/Style.css">
+    <script src="../JS/Common.js"></script>
+    <script src="../JS/Admin.js"></script>
+</head>
+<body class="admin">
+    <!-- Top banner -->
+    <div class="header">
+        <h1>LifeFlow Administration Portal</h1>
+    </div>
+
+    <!-- Navigation bar -->
+    <div class="topnav">
+        <a href="../index.html">Home</a>
+        <a href="AdminRegistration.html" class="active">Registration</a>
+        <a href="AdminDashboard.html">Dashboard</a>
+        <a href="AdminVerifyRequests.html">Verify Requests</a>
+        <a href="AdminManageUsers.html">Manage Users</a>
+        <a href="AdminManageHospitals.html">Hospitals</a>
+    </div>
+
+    <!-- Registration form container -->
+    <div class="container">
+        <!-- novalidate disables browser default popups to allow pure JS validation -->
+        <form onsubmit="return validateAdminRegistration()" onreset="cleanAllErrors()" novalidate>
+            <fieldset>
+                <legend>Administrator Registration Information</legend>
+                <table class="form-table">
+                    <tr>
+                        <td>Full Name:</td>
+                        <td>
+                            <input type="text" id="fullName" placeholder="e.g. Tanvir Hosen">
+                            <span class="error-msg" id="err_fullName"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Admin ID:</td>
+                        <td>
+                            <input type="text" id="adminId" placeholder="e.g. ADM-1001">
+                            <span class="error-msg" id="err_adminId"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Email Address:</td>
+                        <td>
+                            <input type="email" id="email" placeholder="admin@lifeflow.org">
+                            <span class="error-msg" id="err_email"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Phone Number:</td>
+                        <td>
+                            <input type="text" id="phone" placeholder="017XXXXXXXX">
+                            <span class="error-msg" id="err_phone"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>System Role:</td>
+                        <td>
+                            <select id="adminRole">
+                                <option value="">-- Select Role --</option>
+                                <option value="SuperAdmin">Super Administrator</option>
+                                <option value="Verifier">Medical Request Verifier</option>
+                                <option value="Coordinator">Inventory Coordinator</option>
+                            </select>
+                            <span class="error-msg" id="err_adminRole"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Account Password:</td>
+                        <td>
+                            <input type="password" id="password" placeholder="At least 6 characters">
+                            <span class="error-msg" id="err_password"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Confirm Password:</td>
+                        <td>
+                            <input type="password" id="confirmPassword" placeholder="Re-type password">
+                            <span class="error-msg" id="err_confirmPassword"></span>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+
+            <!-- Action buttons -->
+            <div class="btn-group">
+                <input type="submit" value="Register Admin" class="btn btn-primary">
+                <input type="reset" value="Reset Fields" class="btn btn-reset">
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-text">
+        <p>LifeFlow Portal Administration &copy; 2026</p>
+    </div>
+</body>
+</html>

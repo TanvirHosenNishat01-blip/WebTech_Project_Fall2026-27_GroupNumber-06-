@@ -3,281 +3,274 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
 }
 
 body {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 16px;
-    background-color: whitesmoke;
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 30px 20px;
+    background-color: #f4f6f9;
+    padding-bottom: 40px;
 }
 
+/* --- Header Banner Style --- */
 .header {
-    background-color: rgb(2, 150, 27);
-    padding: 10px 15px;
-    text-align: center;
+    background-color: #1e3a8a;
     color: white;
-    border-radius: 15px;
-    margin-bottom: 20px;
+    text-align: center;
+    padding: 20px 0;
 }
 
 #logo {
     display: block;
-    margin: 15px auto 5px;
+    margin: 15px auto 5px auto;
     max-height: 80px;
 }
 
-/* --- Navigation Bar --- */
+/* --- Navigation Bar Styling --- */
 .topnav {
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    background-color: rgb(113, 16, 73);
+    background-color: #0f172a;
     overflow: hidden;
-    border-radius: 15px;
+    text-align: center;
     margin-bottom: 25px;
 }
 
 .topnav a {
-    float: left;
-    display: block;
-    color: white;
+    display: inline-block;
+    color: #f8fafc;
     text-align: center;
-    padding: 14px 16px;
+    padding: 14px 20px;
     text-decoration: none;
     font-size: 15px;
     font-weight: bold;
 }
 
-.topnav a:hover,
-.VAnchor:hover {
-    color: rgb(225, 11, 11);
-    background-color: rgba(0, 0, 0, 0.1);
+.topnav a:hover {
+    background-color: #3b82f6;
+    color: white;
 }
 
-#VregAnchor,
-#VHomeAnchor,
-#VRequestAnchor,
-#VProfileAnchor,
-#VHistoryAnchor,
-#VLoginAnchor {
-    color: red;
+.topnav a.active {
+    background-color: #2563eb;
+    color: white;
 }
 
-/* --- Containers & Layout --- */
+/* --- Main Content Wrapper --- */
 .container {
-    width: 100%;
-    max-width: 620px;
+    width: 85%;
+    max-width: 1000px;
     margin: 0 auto;
-    background-color: white;
+    background: #ffffff;
     padding: 25px 30px;
     border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.intro {
-    width: 100%;
-}
-
-p {
-    text-align: left;
-    font-weight: bold;
-}
-
-/* --- Headings & Intro Paragraphs --- */
-#HomeintroP1 {
-    color: rgb(168, 29, 56);
-    font-size: 25px;
-    text-align: center;
-}
-
-#introP1 {
-    color: black;
-    text-align: left;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-#introP2 {
-    color: rgb(78, 77, 75);
-    text-align: left;
-    font-size: 15px;
-}
-
-#ProfileintroP,
-#RequestintroP,
-#HistoryintroP,
-#RegintroP {
-    color: rgb(158, 23, 23);
-    text-align: center;
-    font-size: 25px;
-    font-weight: bold;
-}
-
-#ProfilePicture {
-    border-radius: 50%;
-    height: 200px;
-    width: 200px;
-    border: 2px solid rgb(168, 29, 56);
-}
-
-#ProfileP {
-    text-align: center;
-}
-
-/* --- Images & Media --- */
-.tableImage td {
-    width: 50%;
-    padding: 5px;
-}
-
-.tableImage img {
-    display: block;
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-#homeimage {
-    display: block;
-    width: 620px;
-    height: 420px;
-    margin: 0 auto;
-    border-radius: 5%;
-    object-fit: cover;
-}
-
-video {
-    display: block;
-    width: 100%;
-    max-width: 620px;
-    height: auto;
-    margin: 0 auto 25px auto;
-    background-color: whitesmoke;
-    border-radius: 15px;
-}
-
-/* --- Forms, Fieldsets & Tables --- */
+/* --- Fieldset and Legend Styling --- */
 fieldset {
-    background-color: #FFFAFB;
-    border: 1px solid rgb(213, 47, 47);
-    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
     padding: 20px;
     margin-bottom: 20px;
 }
 
 legend {
     font-weight: bold;
+    color: #1e3a8a;
+    padding: 0 8px;
+    font-size: 16px;
+    background-color: #1e3a8a; /* Ensures visual consistency */
     color: white;
-    background-color: crimson;
-    padding: 6px 14px;
-    border-radius: 100px;
+    border-radius: 4px;
 }
 
-table {
+/* --- Table Layout for Forms --- */
+table.form-table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.formTD {
-    padding: 8px 6px;
+table.form-table td {
+    padding: 10px 8px;
     vertical-align: top;
 }
 
-.formLabel {
-    color: rgb(95, 27, 27);
+table.form-table td:first-child {
+    width: 25%;
+    font-weight: bold;
+    color: #334155;
 }
 
+/* --- Inputs and Select Drop-down Elements --- */
 input[type="text"],
-input[type="number"],
 input[type="email"],
 input[type="password"],
-input[type="date"],
-input[type="file"],
 select,
 textarea {
-    width: 100%;
+    width: 90%;
     padding: 8px 10px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 16px;
-    border: 1px solid rgb(144, 40, 40);
-    border-radius: 5px;
-    background-color: rgb(255, 255, 255);
+    border: 1px solid #94a3b8;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #2563eb;
 }
 
 textarea {
-    height: 140px;
+    height: 80px;
+    resize: vertical;
 }
 
-input[type="radio"],
-input[type="checkbox"] {
-    padding: 10px 28px;
-    font-size: 16px;
-    accent-color: rgb(212, 20, 20);
+/* --- Validation Error Text --- */
+.error-msg {
+    color: #dc2626;
+    font-size: 12px;
+    display: block;
+    margin-top: 4px;
+    min-height: 15px;
 }
 
-/* --- Buttons & Actions --- */
-input[type="submit"],
-input[type="reset"],
-.homeBtn {
-    padding: 10px 20px;
-    font-size: 16px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+/* --- Buttons Styling --- */
+.btn-group {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.btn {
+    padding: 10px 24px;
+    font-size: 14px;
     font-weight: bold;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
-    margin-left: 8px;
-    width: 48%;
-    border-radius: 10px;
-    color: white;
-    display: inline-block;
+    margin: 0 6px;
     text-decoration: none;
+    display: inline-block;
 }
 
-#submit,
-.homeBtn {
-    background-color: rgb(44, 93, 46);
+.btn-primary {
+    background-color: #2563eb;
+    color: white;
 }
 
-#reset {
-    background-color: rgb(6, 54, 74);
+.btn-primary:hover {
+    background-color: #1d4ed8;
 }
 
-#submit:hover,
-#reset:hover {
-    background-color: crimson;
+.btn-reset {
+    background-color: #64748b;
+    color: white;
 }
 
-.homeBtn:hover {
-    background-color: rgb(8, 161, 28);
+.btn-reset:hover {
+    background-color: #475569;
 }
 
-.homeButtons {
-    text-align: center;
-    margin: 25px 0;
+.btn-success {
+    background-color: #16a34a;
+    color: white;
 }
 
-/* --- Messages & Badges --- */
-.errorMsg {
-    color: red;
+.btn-danger {
+    background-color: #dc2626;
+    color: white;
 }
 
-#AcceptShow1,
-#AcceptShow2 {
-    color: green;
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+/* --- Metric Summary Cards --- */
+.card-grid {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.metric-card {
+    flex: 1;
+    background: #f8fafc;
+    border-left: 5px solid #2563eb;
+    padding: 18px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.metric-card h3 {
+    color: #64748b;
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.metric-card p {
+    font-size: 26px;
+    font-weight: bold;
+    color: #0f172a;
+}
+
+/* --- Data Display Tables --- */
+table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table.data-table th, 
+table.data-table td {
+    border: 1px solid #cbd5e1;
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 14px;
+}
+
+table.data-table th {
+    background-color: #f1f5f9;
+    color: #1e293b;
+}
+
+table.data-table tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+/* --- Status Badge Indicators --- */
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
     font-weight: bold;
 }
 
-/* --- Footer --- */
-.footer {
-    background-color: rgb(20, 18, 117);
+.badge-pending {
+    background-color: #fef08a;
+    color: #854d0e;
+}
+
+.badge-verified {
+    background-color: #bbf7d0;
+    color: #166534;
+}
+
+.badge-suspended {
+    background-color: #fecaca;
+    color: #991b1b;
+}
+
+.badge-active {
+    background-color: #bfdbfe;
+    color: #1e40af;
+}
+
+/* --- Footer Note --- */
+.footer-text {
     text-align: center;
-    padding: 10px;
-    margin: 20px auto 0 auto;
-    max-height: 80px;
-    border-radius: 15px;
-    color: white;
+    margin-top: 30px;
+    color: #64748b;
+    font-size: 13px;
 }
