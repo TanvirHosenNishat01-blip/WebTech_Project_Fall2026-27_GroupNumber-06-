@@ -1,147 +1,68 @@
 # 🩸 LifeFlow: Real-Time Blood Link & Emergency Network
- 
-LifeFlow is a centralized, privacy-focused, and role-based blood donation and emergency network developed using native PHP, MySQL, HTML5/CSS3, Vanilla JavaScript, and AJAX. The platform bridges the communication gap between voluntary blood donors, emergency patients, hospital authorities, and clinical administrators into a unified, life-saving workflow.
- 
----
- 
-🌟 **Core System Highlights**<br>
- 
-🔐 Role-Based Access Control (RBAC): Strict session-authenticated route protection for 4 distinct roles (System Administrator, Voluntary Donor, Patient/Requester, and Hospital/Blood Bank Authority).<br>
-⚡ Asynchronous Data Exchange (AJAX): Dynamic District-to-Thana cascading dropdowns and instant donor filtration without full-page reloads.<br>
-⏱️ Smart Automated Cooldown: Automated calculation using MySQL DATEDIFF() to enforce the mandatory 90-day cooldown interval for voluntary donors.<br>
-🛡️ Privacy First Shield: Configurable phone number masking to safeguard voluntary blood donors against unauthorized data scraping and spam calls..<br>
-💉 Institutional Blood Inventory: Dedicated hospital portal for monitoring reserve stock units, blood group availability, and verifying clinical requisitions..<br>
-🚨 Medical Urgency Classification: Real-time visual tagging system distinguishing between immediate critical needs and scheduled transfusions..<br>
- 
----
- 
-👥 **Module Architecture & Features**
- 
-🛡️ 1. **System Administrator Portal**<br>
-📊 Telemetry & Analytics: High-level metrics tracking total registered donors, verified active cases, institutional blood banks, and fulfilled emergency blood requests..<br>
-📑 Institutional & Prescription Audit: Review uploaded hospital documentation and verify registered blood bank credentials to mitigate fraud..<br>
-👥 User & Donor Directory: Monitor user activity, inspect recorded donation logs, and maintain system integrity with account suspension controls.<br>
- 
-❤️ 2.**Voluntary Donor Portal**
-<br>
-⏳ Donation Cooldown Tracker: Automated status counter reflecting eligibility countdowns computed from the latest recorded donation date..<br>
-📍 Geo-Matched Emergency Alerts: View urgent, location-filtered blood requests targeted specifically to the donor's district, thana, and compatible blood group..<br>
-🔒 Privacy Shield Controls: Toggle direct contact number visibility on or off; manage incoming contact tickets securely within the portal..<br>
- 
-🙋‍♂️ 3. **Requester / Patient Portal**
-🚑 Emergency Dispatch Ticket: Post urgent transfusion requests specifying required blood group, units, hospital address, contact details, and urgency tier (Critical vs. Scheduled)..<br>
-🔍 Real-Time Donor Discovery: Search available donors dynamically using responsive blood group, district, and thana filters powered by AJAX..<br>
-✅ One-Click Ticket Resolution: Mark active tickets as "Fulfilled" once blood is secured, instantly clearing the pipeline and preventing redundant donor outreach.
-.<br>
-🏥 4. **Hospital / Blood Bank Portal**
-<br>
-🩸 Reserve Stock Inventory: Maintain and update real-time blood stock counts across all categories (A+, A-, B+, B-, AB+, AB-, O+, O-)..<br>
-📋 Direct Requisition Verification: Inspect patient blood demands directly, cross-reference internal stock availability, and validate urgent requisitions..<br>
-📢 Emergency Stock Broadcasts: Dispatch critical shortage alerts to registered voluntary donors whenever blood bank reserves hit a low-threshold warning..<br>
- 
----
- 
-🛠️ **Technology Stack**
- 
-🎨 Frontend Layout & Styling: HTML5 Semantic Markup, Custom CSS3 (Responsive Flexbox and Grid Layouts).<br>
-⚙️ Client Scripting & Async: Vanilla JavaScript (ES6+), Fetch API / Vanilla AJAX (Dynamic Dropdowns, Validation & Cooldown Logic).<br>
-🖥️ Backend Application Layer: Native PHP 8.x (MVC Architecture, Session Management, Parameterized Prepared Statements).<br>
-🗄️ Relational Database: MySQL (Referential Integrity, Foreign Keys, Date Computations via DATEDIFF()).<br>
-🚀 Deployment & Server Environment: Apache HTTP Server (XAMPP Development Environment).<br>
- 
-## 📂 Project Directory Structure
+A static web project for a Web Technologies course. Donors, patients, hospitals, and admins share one network so an emergency blood request can be posted, accepted, stocked, and verified in the same place.
 
-```text
-├── Controller/
-│   ├── AdminController.php
-│   ├── ApiController.php
-│   ├── AuthController.php
-│   ├── DonorController.php
-│   ├── HospitalController.php
-│   └── RequesterController.php
-├── Model/
-│   ├── BloodRequestModel.php
-│   ├── db.php
-│   ├── DonorModel.php
-│   ├── HospitalModel.php
-│   ├── LocationModel.php
-│   ├── VerificationModel.php
-│   └── UserModel.php
-├── View/
-│   ├── css/
-│   │   └── style.css
-│   ├── js/
-│   │   ├── admin.js
-│   │   ├── auth.js
-│   │   ├── donor.js
-│   │   ├── hospital.js
-│   │   ├── requester.js
-│   │   └── validation.js
-│   ├── admin_dashboard.php
-│   ├── donor_dashboard.php
-│   ├── hospital_dashboard.php
-│   ├── requester_dashboard.php
-│   ├── post_request.php
-│   ├── search_donors.php
-│   ├── login.php
-│   ├── logout.php
-│   └── register.php
-├── config/
-│   └── db_config.php
-├── db/
-│   └── lifeflow.sql
-├── uploads/
-├── .gitignore
-├── README.md
-└── index.php
- 
-```
- 
----
- 
-## 🗄️Database Entity Overview
- 
-The system operates on a normalized relational schema (`lifeflow_db`):
- 
-* `users` — Unified credential storage and role allocation (`admin`, `donor`, `requester`, `hospital`).
-* `donor_profiles` — Extended donor attributes including blood group, last donation timestamp, and privacy preferences.
-* `hospital_inventory` — Real-time blood unit storage categorized by hospital reference and blood group.
-* `blood_requests` — Patient emergency tickets with hospital credentials, required units, and urgency flags.
-* `request_verifications` — Administrative verification records and uploaded medical document references.
-* `districts` & `thanas` — Normalized administrative location hierarchy supporting asynchronous cascading lookups.
- 
----
- 
-## 🚀 Local Installation & Setup Guide
- 
-### 1. Clone the Repository
- 
+The site uses only HTML, CSS, and JavaScript. There is no server and no database. Shared records are kept in the browser with `localStorage`.
+
+## How to open
+
+Open `index.html` in a browser. That page is the entry point for every user.
+
+If the browser blocks local files, start a small server from this folder and open `http://127.0.0.1:8766/index.html`:
+
 ```bash
-git clone [https://github.com/TanvirHosenNishat01-blip/WebTech_Project_Fall2026-27_GroupNumber-06-.git](https://github.com/TanvirHosenNishat01-blip/WebTech_Project_Fall2026-27_GroupNumber-06-.git)
- 
+python -m http.server 8766
 ```
- 
-### 2. Move to Web Server Directory
- 
-Copy the repository into your local web server root:
- 
-* **XAMPP:** `C:/xampp/htdocs/lifeflow`
- 
-### 3. Database Import
- 
-1. Open **phpMyAdmin** (`http://localhost/phpmyadmin`).
-2. Create a database named `lifeflow_db`.
-3. Import the `db/lifeflow.sql` file.
- 
-### 4. Database Connection Setup
- 
-Check `config/db_config.php` and verify credentials:
- 
-```php
-<?php
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'lifeflow_db');
-?>
- 
+
+## Homepage
+
+The home page states the objective in one line, then shows the four steps:
+
+1. A patient posts the blood need.
+2. A donor accepts and gives blood.
+3. A hospital keeps the bags ready.
+4. An admin verifies the request.
+
+Each step highlights the matching portal. **Open** enters that role.
+
+## Roles
+
+| Role | Starts at | What they do |
+| --- | --- | --- |
+| Admin | `Admin/Pages/AdminRegistration.html` | Register, see dashboard counts, verify or delete requests, suspend users, add or remove hospitals |
+| Donor | `Volunteer/Pages/VolunteerHome.html` | Register, log in, accept a pending request, view donation history |
+| Patient | `Patient/Pages/PatientRegistration.html` | Register, post a blood request, search donors, see request history |
+| Hospital | `Blood Bank/Pages/HospitalRegistration.html` | Register the hospital, update bag stock, send a requisition, broadcast an emergency |
+
+Each role has its own pages, stylesheet, and scripts:
+
+```
+index.html
+Admin/        Pages, Design/Style.css, JS
+Volunteer/    Pages, Design/Style.css, JS, Images
+Patient/      Pages, Design/Style.css, JS
+Blood Bank/   Pages, Design/Style.css, JS
+```
+
+Pages load CSS and JS from the folder above them (`../Design`, `../JS`). Links back to the home page use `../../index.html`.
+
+## How the roles connect
+
+All four portals read and write the same browser storage keys:
+
+| Key | Holds |
+| --- | --- |
+| `lf_users` | Donors and patients |
+| `lf_accounts` | Usernames and passwords used at login |
+| `lf_hospitals` | Hospital name, area, and bag stock |
+| `lf_requests` | Blood requests shared by patients, donors, hospitals, and the admin |
+| `myRequests` | The patient's own copy of those requests |
+| `lf_logged_donor` | Name of the donor who is signed in |
+| `lf_active_admin` | Admin who last registered on this browser |
+
+A patient request appears on the donor page while it is pending. When a donor accepts it, the status becomes Accepted for the admin and for the patient. A hospital registration and added bags show up in the admin hospital list. The admin can mark a request Verified or remove it.
+
+The first visit to an admin page fills sample donors, hospitals, and requests only when those keys are still empty. Later saves are not overwritten.
+
+## Forms
+
+Registration and request forms use a table layout. Each page checks the fields in JavaScript before it saves. Admin id format is `ADM-` followed by four digits, for example `ADM-1001`.
