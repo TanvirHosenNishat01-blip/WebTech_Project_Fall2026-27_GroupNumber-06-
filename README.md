@@ -1,7 +1,7 @@
 # 🩸 LifeFlow: Real-Time Blood Link & Emergency Network
 A static web project for a Web Technologies course. Donors, patients, hospitals, and admins share one network so an emergency blood request can be posted, accepted, stocked, and verified in the same place.
 
-The site uses only HTML, CSS, and JavaScript. There is no server and no database. Shared records are kept in the browser with `localStorage`.
+The site uses only HTML, CSS, and JavaScript. There is no server and no database.
 
 ## How to open
 
@@ -48,16 +48,6 @@ Pages load CSS and JS from the folder above them (`../Design`, `../JS`). Links b
 ## How the roles connect
 
 All four portals read and write the same browser storage keys:
-
-| Key | Holds |
-| --- | --- |
-| `lf_users` | Donors and patients |
-| `lf_accounts` | Usernames and passwords used at login |
-| `lf_hospitals` | Hospital name, area, and bag stock |
-| `lf_requests` | Blood requests shared by patients, donors, hospitals, and the admin |
-| `myRequests` | The patient's own copy of those requests |
-| `lf_logged_donor` | Name of the donor who is signed in |
-| `lf_active_admin` | Admin who last registered on this browser |
 
 A patient request appears on the donor page while it is pending. When a donor accepts it, the status becomes Accepted for the admin and for the patient. A hospital registration and added bags show up in the admin hospital list. The admin can mark a request Verified or remove it.
 
